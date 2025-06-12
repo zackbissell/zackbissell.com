@@ -10,7 +10,7 @@ export default function DiscoAscension() {
   return (
     <Layout>
       <HeroDisco content={heroContent} />
-      <div className="container space-y-12 starfield">
+      <div className="container space-y-12 starfield-crt">
         <AudioPlayerDisco src="https://example.com/audio.mp3" incidents={incidentLog} />
         <IncidentLog log={incidentLog} />
         <TracklistDisco tracks={tracklist} />
