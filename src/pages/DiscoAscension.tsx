@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Play, AlertTriangle, FileText, Clock, Radio } from 'lucide-react';
+import AlphaThetaCercleLoreBlock from '../components/AlphaThetaCercleLoreBlock';
 
 const DiscoAscension = () => {
   const [showConspiracy, setShowConspiracy] = useState(false);
@@ -70,7 +71,7 @@ const DiscoAscension = () => {
           </button>
 
           {showConspiracy && (
-            <div className="mt-8 bg-green-900/20 border border-green-500/30 rounded-xl p-8 font-mono text-sm">
+            <div className="mt-8 bg-green-900/20 border border-green-500/30 rounded-xl p-8 font-mono text-sm space-y-8">
               <div className="mb-6">
                 <div className="text-green-400 mb-2">ACCESSING GOVERNMENT DATABASE...</div>
                 <div className="text-green-400 mb-2">CLEARANCE LEVEL: COSMIC</div>
@@ -107,10 +108,12 @@ const DiscoAscension = () => {
                 </p>
 
                 <p className="text-yellow-300">
-                  <strong>CONTAINMENT STATUS:</strong> FAILED. The transmission has leaked online. 
+                  <strong>CONTAINMENT STATUS:</strong> FAILED. The transmission has leaked online.
                   Citizens are advised to listen responsibly and report any side effects to local authorities.
                 </p>
               </div>
+
+              <AlphaThetaCercleLoreBlock />
             </div>
           )}
         </div>
