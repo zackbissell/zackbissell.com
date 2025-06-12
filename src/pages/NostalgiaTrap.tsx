@@ -119,7 +119,10 @@ const NostalgiaTrap = () => {
                   <span>59:14 of pure emotional chaos</span>
                 </div>
               </div>
-              <button className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-2xl">
+              <button
+                aria-label="Play Nostalgia Trap mix"
+                className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-2xl"
+              >
                 <Play className="w-10 h-10 text-white ml-1" />
               </button>
             </div>
