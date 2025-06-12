@@ -123,7 +123,10 @@ const RoleModel = () => {
                   <span>62:54 of beautiful chaos</span>
                 </div>
               </div>
-              <button className="w-20 h-20 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-2xl group">
+              <button
+                aria-label="Play Role Model mix"
+                className="w-20 h-20 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-2xl group"
+              >
                 <Play className="w-10 h-10 text-white ml-1 group-hover:scale-110 transition-transform" />
               </button>
             </div>

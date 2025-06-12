@@ -41,7 +41,10 @@ const DiscoAscension = () => {
                 <h3 className="text-2xl font-bold text-amber-500 mb-2">The Last Known Copy</h3>
                 <p className="text-gray-300">Recovered from the Groove Singularity incident</p>
               </div>
-              <button className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center hover:bg-amber-400 transition-colors transform hover:scale-105">
+              <button
+                aria-label="Play Disco Ascension mix"
+                className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center hover:bg-amber-400 transition-colors transform hover:scale-105"
+              >
                 <Play className="w-8 h-8 text-black ml-1" />
               </button>
             </div>
