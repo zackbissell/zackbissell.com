@@ -21,8 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen bg-white">
-          <Routes>
+        <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/disco-ascension" element={<DiscoAscension />} />
@@ -39,7 +38,6 @@ const App = () => (
             <Route path="/booking" element={<ComingSoon title="Booking" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

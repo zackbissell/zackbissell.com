@@ -1,8 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { Play, ArrowRight, Music, Calendar, Zap, Heart, AlertTriangle } from 'lucide-react';
-import InterceptedTranscript from '../components/ui/InterceptedTranscript';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
+import {
+  Play,
+  ArrowRight,
+  Music,
+  Calendar,
+  Zap,
+  Heart,
+  AlertTriangle,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import Layout from "../components/global/Layout";
+import InterceptedTranscript from "../components/ui/InterceptedTranscript";
 
 const Home = () => {
   const [currentQuote, setCurrentQuote] = useState(0);
@@ -65,7 +74,7 @@ const Home = () => {
   ];
 
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Home – Zack Bissell</title>
       </Helmet>
@@ -268,7 +277,7 @@ const Home = () => {
         />
       </section>
     </div>
-  </>
+    </Layout>
   );
 };
 
