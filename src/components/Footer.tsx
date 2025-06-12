@@ -14,16 +14,32 @@ const Footer = () => {
               Brooklyn's storytelling DJ & sonic architect. World-class sets, unforgettable journeys.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="text-gray-400 hover:text-amber-500 transition-colors"
+              >
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="text-gray-400 hover:text-amber-500 transition-colors"
+              >
                 <Facebook className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
+              <a
+                href="#"
+                aria-label="Music"
+                className="text-gray-400 hover:text-amber-500 transition-colors"
+              >
                 <Music className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
+              <a
+                href="#"
+                aria-label="Email"
+                className="text-gray-400 hover:text-amber-500 transition-colors"
+              >
                 <Mail className="w-6 h-6" />
               </a>
             </div>
