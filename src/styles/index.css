@@ -22,6 +22,8 @@
   .text-heading-2 { @apply text-3xl md:text-4xl font-grotesque font-semibold tracking-tight; }
   .text-body { @apply text-base font-sans-serif font-normal leading-relaxed; }
   .text-subtle { @apply text-sm text-foreground/70; }
+  .content-container { @apply mx-auto max-w-7xl px-6; }
+  .section-padding { @apply py-20; }
 }
 
 .font-grotesque { font-family: 'Syne', sans-serif; }
