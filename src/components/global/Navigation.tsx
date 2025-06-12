@@ -22,7 +22,7 @@ const Navigation = () => {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-foreground/10">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between p-4">
-        <Link to="/" className="text-heading-2 font-grotesque">
+        <Link to="/" className="text-heading-2 font-heading">
           Zack Bissell
         </Link>
 

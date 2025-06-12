@@ -26,8 +26,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        grotesque: ['Syne', 'sans-serif'],
-        'sans-serif': ['Inter', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Inter', 'sans-serif'],
       }
     }
   },
