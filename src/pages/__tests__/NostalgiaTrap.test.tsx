@@ -12,6 +12,7 @@ describe('NostalgiaTrap page', () => {
       </MemoryRouter>
     );
     expect(screen.getByRole('heading', { name: /before you enter/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /skip the memories/i })).toBeInTheDocument();
     await userEvent.click(screen.getByRole('button', { name: /i'm ready to remember/i }));
     expect(screen.getByRole('heading', { name: /how are you feeling right now/i })).toBeInTheDocument();
   });
