@@ -3,9 +3,20 @@ import React, { useState } from 'react';
 import { Play, AlertTriangle, FileText, Clock, Radio } from 'lucide-react';
 import AlphaThetaCercleLoreBlock from '../components/AlphaThetaCercleLoreBlock';
 import Layout from '../components/Layout';
+import Tracklist from '../components/Tracklist';
 
 const DiscoAscension = () => {
   const [showConspiracy, setShowConspiracy] = useState(false);
+
+  const tracklist = [
+    { title: 'Opening Transmission - [CLASSIFIED]' },
+    { title: 'Temporal Loop Genesis - Artist Unknown' },
+    { title: 'Disco Paradox Formation - [REDACTED]' },
+    { title: 'Reality Restructure Sequence - Government Property' },
+    { title: 'The Groove Singularity - Zack Bissell Original' },
+    { title: 'Containment Breach Protocol - [DATA CORRUPTED]' },
+    { title: 'Final Transmission - Brooklyn Underground' },
+  ];
 
   return (
     <Layout>
@@ -189,25 +200,12 @@ const DiscoAscension = () => {
               </p>
             </div>
 
-            {/* Placeholder for tracklist - would be populated with actual tracks */}
-            <div className="space-y-3">
-              {[
-                "Opening Transmission - [CLASSIFIED]",
-                "Temporal Loop Genesis - Artist Unknown",
-                "Disco Paradox Formation - [REDACTED]",
-                "Reality Restructure Sequence - Government Property",
-                "The Groove Singularity - Zack Bissell Original",
-                "Containment Breach Protocol - [DATA CORRUPTED]",
-                "Final Transmission - Brooklyn Underground"
-              ].map((track, index) => (
-                <div key={index} className="flex items-center gap-4 p-3 hover:bg-amber-500/10 rounded-lg transition-colors">
-                  <div className="w-8 h-8 bg-amber-500/20 rounded flex items-center justify-center text-amber-500 font-mono text-sm">
-                    {index + 1}
-                  </div>
-                  <div className="text-gray-200 font-mono">{track}</div>
-                </div>
-              ))}
-            </div>
+            <Tracklist
+              tracks={tracklist}
+              className="space-y-3"
+              itemClassName="hover:bg-amber-500/10 p-3"
+              indexClassName="bg-amber-500/20 text-amber-500"
+            />
 
             <div className="mt-8 p-4 bg-red-900/20 border border-red-500/30 rounded-lg">
               <p className="text-red-200 text-sm">

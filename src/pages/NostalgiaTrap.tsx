@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Heart, AlertCircle, Clock, Music, Share } from 'lucide-react';
 import Layout from '../components/Layout';
+import Tracklist from '../components/Tracklist';
 
 const NostalgiaTrap = () => {
   const [emotionalState, setEmotionalState] = useState('');
@@ -239,20 +240,12 @@ const NostalgiaTrap = () => {
           </h2>
 
           <div className="world-card p-8">
-            <div className="space-y-4">
-              {tracklist.map((track, index) => (
-                <div key={index} className="flex items-center gap-4 p-4 hover:bg-purple-500/10 rounded-xl transition-colors group">
-                  <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 font-mono text-sm group-hover:bg-purple-500/30">
-                    {index + 1}
-                  </div>
-                  <div className="flex-grow">
-                    <div className="text-callout text-white font-medium">{track.title}</div>
-                    <div className="text-subheadline text-gray-400">{track.artist}</div>
-                  </div>
-                  <div className="text-subheadline text-amber-500 font-mono">{track.time}</div>
-                </div>
-              ))}
-            </div>
+            <Tracklist
+              tracks={tracklist}
+              itemClassName="hover:bg-purple-500/10 group"
+              indexClassName="bg-purple-500/20 text-purple-400 group-hover:bg-purple-500/30"
+              timeClassName="text-amber-500"
+            />
 
             <div className="mt-8 p-6 bg-red-900/20 border border-red-500/30 rounded-xl">
               <p className="text-red-200 text-callout">
