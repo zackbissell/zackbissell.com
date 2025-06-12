@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Play, Heart, AlertCircle, Clock, Music, Share } from 'lucide-react';
+import Layout from '../components/Layout';
 
 const NostalgiaTrap = () => {
   const [emotionalState, setEmotionalState] = useState('');
@@ -36,7 +37,7 @@ const NostalgiaTrap = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <Layout>
       {/* Emotional Prompt Overlay */}
       {showPrompt && (
         <div className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6">
@@ -280,7 +281,7 @@ const NostalgiaTrap = () => {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 

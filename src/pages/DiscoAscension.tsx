@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import { Play, AlertTriangle, FileText, Clock, Radio } from 'lucide-react';
 import AlphaThetaCercleLoreBlock from '../components/AlphaThetaCercleLoreBlock';
+import Layout from '../components/Layout';
 
 const DiscoAscension = () => {
   const [showConspiracy, setShowConspiracy] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <Layout>
       {/* Hero Section with Warning */}
       <section className="py-20 bg-gradient-to-b from-red-900/20 to-black">
         <div className="max-w-4xl mx-auto px-6">
@@ -234,7 +235,7 @@ const DiscoAscension = () => {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 

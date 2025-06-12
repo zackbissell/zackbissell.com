@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { Download, Music, Users, Award } from 'lucide-react';
+import Layout from '../components/Layout';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <Layout>
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-4xl mx-auto px-6">
@@ -185,7 +186,7 @@ const About = () => {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 
