@@ -17,7 +17,7 @@ export default function HeroDisco({ content }: HeroProps) {
         <span className="text-red-300 font-semibold text-sm">CLASSIFIED MATERIAL</span>
       </div>
       <h1
-        className="text-heading-1 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent font-grotesque mb-4 glitch-text"
+        className="text-heading-1 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent font-heading mb-4 glitch-text"
         data-text={content.title}
       >
         {content.title}
