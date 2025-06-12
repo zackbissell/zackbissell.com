@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Play, AlertTriangle, FileText, Clock, Radio } from 'lucide-react';
 import AlphaThetaCercleLoreBlock from '../components/AlphaThetaCercleLoreBlock';
 import Layout from '../components/Layout';
@@ -20,6 +21,9 @@ const DiscoAscension = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Disco Ascension – Zack Bissell</title>
+      </Helmet>
       {/* Hero Section with Warning */}
       <section className="py-20 bg-gradient-to-b from-red-900/20 to-black">
         <div className="max-w-4xl mx-auto px-6">
