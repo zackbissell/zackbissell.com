@@ -39,3 +39,36 @@
 }
 
 .animate-glitch { animation: glitch 1s infinite; }
+
+@keyframes glitch-flicker {
+  0%, 100% { transform: translate(0); }
+  50% { transform: translate(1px, -1px) skew(-0.5deg); }
+}
+
+.animate-glitch-flicker { animation: glitch-flicker 2s infinite; }
+
+.starfield::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 2px 2px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.crt-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  mix-blend-mode: overlay;
+}

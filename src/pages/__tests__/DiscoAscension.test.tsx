@@ -12,7 +12,7 @@ describe('DiscoAscension page', () => {
       </MemoryRouter>
     );
     expect(screen.getByRole('heading', { name: /disco ascension/i })).toBeInTheDocument();
-    const toggle = screen.getByRole('button', { name: /show log/i });
+    const toggle = screen.getByRole('button', { name: /access classified research files/i });
     await userEvent.click(toggle);
     expect(screen.getByText(/disco ball manifestation/i)).toBeInTheDocument();
   });
