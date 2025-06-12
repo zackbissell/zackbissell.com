@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Play, Coffee, Zap, AlertTriangle, Clock, FileText, Radio } from 'lucide-react';
 import Layout from '../components/Layout';
+import Tracklist from '../components/Tracklist';
 
 const RoleModel = () => {
   const [showLegalDisclaimer, setShowLegalDisclaimer] = useState(false);
@@ -283,20 +284,13 @@ const RoleModel = () => {
               </p>
             </div>
 
-            <div className="space-y-3">
-              {tracklist.map((track, index) => (
-                <div key={index} className="flex items-center gap-4 p-3 hover:bg-yellow-500/10 rounded-lg transition-colors group">
-                  <div className="w-8 h-8 bg-yellow-500/20 rounded-full flex items-center justify-center text-yellow-400 font-mono text-sm group-hover:bg-yellow-500/30">
-                    {index + 1}
-                  </div>
-                  <div className="flex-grow">
-                    <div className="text-callout text-white font-medium">{track.title}</div>
-                    <div className="text-subheadline text-gray-400">{track.artist}</div>
-                  </div>
-                  <div className="text-subheadline text-amber-500 font-mono">{track.time}</div>
-                </div>
-              ))}
-            </div>
+            <Tracklist
+              tracks={tracklist}
+              className="space-y-3"
+              itemClassName="hover:bg-yellow-500/10 group p-3"
+              indexClassName="bg-yellow-500/20 text-yellow-400 group-hover:bg-yellow-500/30"
+              timeClassName="text-amber-500"
+            />
 
             <div className="mt-8 p-6 bg-yellow-900/20 border border-yellow-500/30 rounded-xl">
               <p className="text-yellow-200 text-callout">
