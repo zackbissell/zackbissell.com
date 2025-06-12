@@ -1,16 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toast } from '@/components/ui/use-toast';
+import { showAccessDeniedAlert } from '@/lib/alerts'
 
 export default function AlphaThetaCercleLoreBlock() {
   const handleDenied = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    toast({
-      title: 'Access Denied',
-      description: 'You do not have permission to access this resource.',
-    });
-    e.currentTarget.focus();
-  };
+    e.preventDefault()
+    showAccessDeniedAlert()
+    e.currentTarget.focus()
+  }
 
   return (
     <motion.div
