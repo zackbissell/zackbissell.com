@@ -10,7 +10,11 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground font-sans">
       <Navigation />
-      <main id="main-content" className="container mx-auto px-6 py-10 pt-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="container mx-auto px-6 py-10 pt-16"
+      >
         {children}
       </main>
       <Footer />
