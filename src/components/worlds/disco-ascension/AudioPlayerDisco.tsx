@@ -60,7 +60,10 @@ export default function AudioPlayerDisco({ src, incidents }: Props) {
       </div>
       <div className="bg-black/40 backdrop-blur-md rounded p-6 text-center">
         <p className="text-body text-gray-300 mb-4">Mixcloud embed coming soon.</p>
-        <button className="w-16 h-16 bg-amber-500/20 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto">
+        <button
+          aria-label="Play audio"
+          className="w-16 h-16 bg-amber-500/20 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto"
+        >
           <Play className="w-8 h-8 text-amber-400" />
         </button>
       </div>
