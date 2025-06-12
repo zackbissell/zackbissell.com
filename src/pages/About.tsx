@@ -2,7 +2,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Download, Music, Users, Award } from 'lucide-react';
-import Layout from '../components/Layout';
+import Layout from '../components/global/Layout';
 
 const About = () => {
   return (

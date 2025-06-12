@@ -4,9 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import ComingSoon from "./components/ComingSoon";
+
+import ComingSoon from "./components/ui/ComingSoon";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import DiscoAscension from "./pages/DiscoAscension";
@@ -23,7 +22,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen bg-white">
-          <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -41,7 +39,6 @@ const App = () => (
             <Route path="/booking" element={<ComingSoon title="Booking" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
         </div>
       </BrowserRouter>
     </TooltipProvider>

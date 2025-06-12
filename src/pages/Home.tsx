@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Play, ArrowRight, Music, Calendar, Zap, Heart, AlertTriangle } from 'lucide-react';
-import InterceptedTranscript from '../components/InterceptedTranscript';
+import InterceptedTranscript from '../components/ui/InterceptedTranscript';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

@@ -4,8 +4,8 @@ import { Instagram, Facebook, Music, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black border-t border-amber-500/20 py-12">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-background border-t border-foreground/10 py-12">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
@@ -68,10 +68,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-amber-500/20 mt-8 pt-8 text-center">
-          <p className="text-gray-400">
-            © 2024 Zack Bissell. All rights reserved. | 
-            <span className="text-amber-500 ml-2">Let's build something legendary.</span>
+        <div className="border-t border-foreground/10 mt-8 pt-8 text-center">
+          <p className="text-subtle">
+            © 2024 Zack Bissell. All rights reserved.
           </p>
         </div>
       </div>
