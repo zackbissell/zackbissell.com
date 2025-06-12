@@ -25,7 +25,7 @@ const Tracklist: React.FC<TracklistProps> = ({
     <div className={`space-y-4 ${className}`.trim()}>
       {tracks.map((track, index) => (
         <div
-          key={index}
+          key={track.title}
           className={`flex items-center gap-4 p-4 rounded-xl transition-colors ${itemClassName}`.trim()}
         >
           <div
