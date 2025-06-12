@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=Syne:wght@700..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --primary: 34 97% 50%;
+    --primary-foreground: 0 0% 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .text-heading-1 { @apply text-4xl md:text-6xl font-grotesque font-bold tracking-tighter; }
+  .text-heading-2 { @apply text-3xl md:text-4xl font-grotesque font-semibold tracking-tight; }
+  .text-body { @apply text-base font-sans-serif font-normal leading-relaxed; }
+  .text-subtle { @apply text-sm text-foreground/70; }
+}
+
+.font-grotesque { font-family: 'Syne', sans-serif; }
+.font-sans-serif { font-family: 'Inter', sans-serif; }
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px,2px); }
+  40% { transform: translate(-2px,-2px); }
+  60% { transform: translate(2px,2px); }
+  80% { transform: translate(2px,-2px); }
+  100% { transform: translate(0); }
+}
+
+.animate-glitch { animation: glitch 1s infinite; }

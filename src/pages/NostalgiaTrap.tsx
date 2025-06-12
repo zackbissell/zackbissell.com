@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Play, Heart, AlertCircle, Clock, Music, Share } from 'lucide-react';
-import Layout from '../components/Layout';
-import Tracklist from '../components/Tracklist';
+import Layout from '../components/global/Layout';
+import Tracklist from '../components/ui/Tracklist';
+import { heroContent } from '../content/nostalgiaTrapData';
 
 const NostalgiaTrap = () => {
   const [emotionalState, setEmotionalState] = useState('');
@@ -76,10 +77,10 @@ const NostalgiaTrap = () => {
             </div>
             
             <h1 className="text-large-title mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
-              NOSTALGIA TRAP
+              {heroContent.title.toUpperCase()}
             </h1>
             <h2 className="text-title1 text-gray-300 mb-8">
-              A DJ Mix for the Emotionally Unstable
+              {heroContent.tagline}
             </h2>
           </div>
 
