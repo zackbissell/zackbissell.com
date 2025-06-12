@@ -72,3 +72,62 @@
   );
   mix-blend-mode: overlay;
 }
+
+/* Glitch text effect using existing glitch animation */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: glitch 1s infinite;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  color: rgba(255, 0, 128, 0.7);
+  transform: translate(-2px, 0);
+  z-index: -1;
+}
+
+.glitch-text::after {
+  color: rgba(0, 255, 255, 0.7);
+  transform: translate(2px, 0);
+  z-index: -2;
+}
+
+/* Combined starfield and CRT overlay */
+.starfield-crt {
+  position: relative;
+}
+
+.starfield-crt::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 2px 2px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.starfield-crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  mix-blend-mode: overlay;
+}
