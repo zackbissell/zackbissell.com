@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import Layout from "../components/global/Layout";
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>404 – Zack Bissell</title>
       </Helmet>
@@ -26,7 +27,7 @@ const NotFound = () => {
           </a>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
