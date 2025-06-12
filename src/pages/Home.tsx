@@ -190,6 +190,24 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuredMixes.map((mix) => (
+              <Link
+                key={mix.title}
+                to={mix.link}
+                className="group rounded-xl overflow-hidden border border-border-secondary hover:shadow-md transition-shadow"
+              >
+                <div className="relative">
+                  <img src={mix.image} alt={mix.title} className="w-full aspect-video object-cover" />
+                  <mix.icon className="absolute top-3 right-3 w-6 h-6 text-white drop-shadow" />
+                </div>
+                <div className="p-4">
+                  <h4 className="text-title3 mb-1">{mix.title}</h4>
+                  <p className="text-subheadline text-foreground-secondary">{mix.subtitle}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
