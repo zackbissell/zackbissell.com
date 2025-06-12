@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Play, Coffee, Zap, AlertTriangle, Clock, FileText, Radio } from 'lucide-react';
+import Layout from '../components/Layout';
 
 const RoleModel = () => {
   const [showLegalDisclaimer, setShowLegalDisclaimer] = useState(false);
@@ -32,7 +33,7 @@ const RoleModel = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <Layout>
       {/* Hero Section with Chaotic Energy */}
       <section className="section-padding bg-gradient-to-b from-yellow-900/20 via-black to-black">
         <div className="content-container">
@@ -324,7 +325,7 @@ const RoleModel = () => {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 
