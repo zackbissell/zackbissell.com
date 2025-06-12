@@ -1,11 +1,15 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Download, Music, Users, Award } from 'lucide-react';
 import Layout from '../components/Layout';
 
 const About = () => {
   return (
     <Layout>
+      <Helmet>
+        <title>About – Zack Bissell</title>
+      </Helmet>
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-4xl mx-auto px-6">

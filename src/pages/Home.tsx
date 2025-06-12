@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { Play, ArrowRight, Music, Calendar, Zap, Heart, AlertTriangle } from 'lucide-react';
 import InterceptedTranscript from '../components/InterceptedTranscript';
 import { Link } from 'react-router-dom';
@@ -64,7 +65,11 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Helmet>
+        <title>Home – Zack Bissell</title>
+      </Helmet>
+      <div className="min-h-screen bg-white">
       {/* Hero Section - Editorial Style */}
       <section className="pt-24 pb-16">
         <div className="content-container">
@@ -263,6 +268,7 @@ const Home = () => {
         />
       </section>
     </div>
+  </>
   );
 };
 

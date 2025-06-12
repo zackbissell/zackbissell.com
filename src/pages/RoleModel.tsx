@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Play, Coffee, Zap, AlertTriangle, Clock, FileText, Radio } from 'lucide-react';
 import Layout from '../components/Layout';
 import Tracklist from '../components/Tracklist';
@@ -35,6 +36,9 @@ const RoleModel = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Role Model – Zack Bissell</title>
+      </Helmet>
       {/* Hero Section with Chaotic Energy */}
       <section className="section-padding bg-gradient-to-b from-yellow-900/20 via-black to-black">
         <div className="content-container">

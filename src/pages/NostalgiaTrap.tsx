@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { Play, Heart, AlertCircle, Clock, Music, Share } from 'lucide-react';
 import Layout from '../components/Layout';
 import Tracklist from '../components/Tracklist';
@@ -39,6 +40,9 @@ const NostalgiaTrap = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Nostalgia Trap – Zack Bissell</title>
+      </Helmet>
       {/* Emotional Prompt Overlay */}
       {showPrompt && (
         <div className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6">
