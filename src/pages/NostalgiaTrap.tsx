@@ -9,6 +9,7 @@ import { heroContent } from '../content/nostalgiaTrapData';
 const NostalgiaTrap = () => {
   const [emotionalState, setEmotionalState] = useState('');
   const [showPrompt, setShowPrompt] = useState(true);
+  const [coolMode, setCoolMode] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,6 +19,14 @@ const NostalgiaTrap = () => {
     }, 10000);
     return () => clearTimeout(timer);
   }, [showPrompt]);
+
+  useEffect(() => {
+    if (emotionalState) {
+      setCoolMode(true);
+    } else {
+      setCoolMode(false);
+    }
+  }, [emotionalState]);
 
   const tracklist = [
     { artist: "Purple Disco Machine, Elderbrook", title: "I Remember (Original Mix)", time: "00:00" },
@@ -57,18 +66,26 @@ const NostalgiaTrap = () => {
             <p className="text-body text-amber-400 mb-8 italic">
               Now press play and let nostalgia trap you.
             </p>
-            <button 
+            <button
               onClick={() => setShowPrompt(false)}
               className="btn-primary text-callout"
             >
               I'm Ready to Remember
+            </button>
+            <button
+              onClick={() => setShowPrompt(false)}
+              className="btn-secondary mt-4 text-callout"
+            >
+              Skip the Memories
             </button>
           </div>
         </div>
       )}
 
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-purple-900/20 via-black to-black">
+      <section
+        className={`section-padding bg-gradient-to-b ${coolMode ? 'from-blue-900/20' : 'from-purple-900/20'} via-black to-black`}
+      >
         <div className="content-container text-center">
           <div className="mb-8">
             <div className="inline-flex items-center gap-3 bg-purple-500/20 border border-purple-500/30 rounded-full px-6 py-3 mb-6">
@@ -113,7 +130,9 @@ const NostalgiaTrap = () => {
       </section>
 
       {/* Audio Player */}
-      <section className="section-padding bg-gradient-to-b from-black to-gray-900">
+      <section
+        className={`section-padding bg-gradient-to-b from-black ${coolMode ? 'to-blue-900' : 'to-gray-900'}`}
+      >
         <div className="content-container">
           <div className="world-card p-8 mb-12">
             <div className="flex flex-col md:flex-row items-center justify-between mb-8">
@@ -193,7 +212,7 @@ const NostalgiaTrap = () => {
       </section>
 
       {/* Interactive Element - Emotional State */}
-      <section className="section-padding bg-black">
+      <section className={`section-padding ${coolMode ? 'bg-slate-900' : 'bg-black'}`}>
         <div className="content-container">
           <div className="world-card p-8 text-center">
             <h3 className="text-title2 mb-6 text-white">How Are You Feeling Right Now?</h3>
@@ -238,7 +257,9 @@ const NostalgiaTrap = () => {
       </section>
 
       {/* Tracklist */}
-      <section className="section-padding bg-gradient-to-b from-black to-gray-900">
+      <section
+        className={`section-padding bg-gradient-to-b from-black ${coolMode ? 'to-blue-900' : 'to-gray-900'}`}
+      >
         <div className="content-container">
           <h2 className="text-title1 text-center mb-16 text-white">
             The <span className="gradient-text">Emotional Roadmap</span>
@@ -263,7 +284,7 @@ const NostalgiaTrap = () => {
       </section>
 
       {/* Share CTA */}
-      <section className="section-padding bg-black">
+      <section className={`section-padding ${coolMode ? 'bg-slate-900' : 'bg-black'}`}>
         <div className="content-container text-center">
           <h2 className="text-title1 mb-8 text-white">
             Share the <span className="gradient-text">Emotional Chaos</span>
@@ -278,6 +299,15 @@ const NostalgiaTrap = () => {
             </button>
             <button className="btn-secondary">
               I Need Therapy Instead
+            </button>
+            <button
+              className="btn-secondary"
+              onClick={() => {
+                setEmotionalState('');
+                setShowPrompt(true);
+              }}
+            >
+              Let Go
             </button>
           </div>
         </div>
