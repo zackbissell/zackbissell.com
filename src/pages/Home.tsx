@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, ArrowRight, Music, Calendar, Zap, Heart, AlertTriangle } from 'lucide-react';
+import InterceptedTranscript from '../components/InterceptedTranscript';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -232,6 +233,16 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Intercepted Transcript Example */}
+      <section className="section-padding bg-black">
+        <InterceptedTranscript
+          timestamp="2023-04-17T22:38:49Z"
+          speaker="ETAB Recon Unit | Seville Node"
+          text={`Confirmed anomaly phase-lock at 22:37:53. Source signal traced to Terry Hunter remix injection.\nWaveform rupture sustained for 112 seconds before stabilization.\nMotion artifacts suggest dual-timeline bleed through.\nRequesting contact with EU Quantum Tribunal.`}
+          audioSrc="/audio/etab_transmission_1.mp3"
+        />
       </section>
     </div>
   );
