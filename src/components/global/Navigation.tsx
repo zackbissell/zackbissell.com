@@ -20,8 +20,11 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-foreground/10">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between p-4">
+    <nav
+      role="navigation"
+      className="fixed inset-x-0 top-0 z-50 bg-background/90 backdrop-blur-xl border-b border-foreground/10"
+    >
+      <div className="container mx-auto flex h-16 items-center justify-between px-6">
         <Link to="/" className="text-heading-2 font-heading">
           Zack Bissell
         </Link>
@@ -33,8 +36,8 @@ const Navigation = () => {
               to={item.path}
               className={`text-body transition-colors ${
                 location.pathname === item.path
-                  ? "text-foreground"
-                  : "text-foreground/70 hover:text-foreground"
+                  ? "text-primary"
+                  : "text-foreground/70 hover:text-primary"
               }`}
             >
               {item.label}
@@ -59,8 +62,8 @@ const Navigation = () => {
                   to={item.path}
                   className={`text-base font-medium transition-colors ${
                     location.pathname === item.path
-                      ? "text-foreground"
-                      : "text-foreground/70 hover:text-foreground"
+                      ? "text-primary"
+                      : "text-foreground/70 hover:text-primary"
                   }`}
                 >
                   {item.label}
