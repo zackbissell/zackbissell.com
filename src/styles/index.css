@@ -7,7 +7,10 @@
 @layer base {
   :root {
     --background: 0 0% 5%;
-    --foreground: 0 0% 95%;
+    /* Apple HIG inspired text colors */
+    --foreground: 240 5% 96%; /* Primary text on dark backgrounds (#F5F5F7) */
+    --foreground-secondary: 240 3% 64%; /* Secondary text (#A1A1A6) */
+    --foreground-tertiary: 240 2% 44%; /* Tertiary text (#6E6E73) */
     --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
   }
@@ -21,7 +24,7 @@
   .text-heading-1 { @apply text-4xl md:text-6xl font-heading font-bold tracking-tighter; }
   .text-heading-2 { @apply text-3xl md:text-4xl font-heading font-semibold tracking-tight; }
   .text-body { @apply text-base font-sans font-normal leading-relaxed; }
-  .text-subtle { @apply text-sm text-foreground/70; }
+  .text-subtle { @apply text-sm text-foreground-secondary; }
   .content-container { @apply mx-auto max-w-7xl px-6; }
   .section-padding { @apply py-20; }
 }
