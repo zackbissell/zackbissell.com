@@ -37,7 +37,7 @@ const Navigation = () => {
               className={`text-body transition-colors ${
                 location.pathname === item.path
                   ? "text-primary"
-                  : "text-foreground/70 hover:text-primary"
+                  : "text-foreground-secondary hover:text-primary"
               }`}
             >
               {item.label}
@@ -49,7 +49,7 @@ const Navigation = () => {
           <SheetTrigger asChild>
             <button
               aria-label="Open menu"
-              className="md:hidden p-2 text-foreground/80 hover:text-foreground"
+              className="md:hidden p-2 text-foreground-secondary hover:text-foreground"
             >
               <Menu className="h-6 w-6" />
             </button>
@@ -63,7 +63,7 @@ const Navigation = () => {
                   className={`text-base font-medium transition-colors ${
                     location.pathname === item.path
                       ? "text-primary"
-                      : "text-foreground/70 hover:text-primary"
+                      : "text-foreground-secondary hover:text-primary"
                   }`}
                 >
                   {item.label}
