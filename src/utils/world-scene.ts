@@ -14,7 +14,7 @@ interface InteractionEvent {
   position?: THREE.Vector2;
   worldPosition?: THREE.Vector3;
   intensity?: number;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 interface CinematicCamera {
@@ -66,8 +66,8 @@ abstract class WorldScene {
   
   // A24 Cinematic System
   protected cinematicCamera: CinematicCamera;
-  protected cameraController: any = null;
-  protected depthOfField: any = null;
+  protected cameraController: THREE.Object3D | null = null;
+  protected depthOfField: THREE.Object3D | null = null;
   
   // Performance & Quality
   protected performanceMonitor: PerformanceMetrics;
@@ -78,7 +78,7 @@ abstract class WorldScene {
   protected lighting: WorldLighting;
   protected particleSystems: Map<string, THREE.Points> = new Map();
   protected audioReactiveObjects: THREE.Object3D[] = [];
-  protected interactiveObjects: THREE.Object3D[] = new Map();
+  protected interactiveObjects: Map<string, THREE.Object3D> = new Map();
   
   // Animation and timing
   protected mixers: THREE.AnimationMixer[] = [];

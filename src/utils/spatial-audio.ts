@@ -184,7 +184,7 @@ class SpatialAudioEngine {
     if (this.isInitialized || !this.options.enabled) return;
 
     try {
-      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      this.audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)();
       
       // Create reverb impulse response
       await this.createReverbBuffer();

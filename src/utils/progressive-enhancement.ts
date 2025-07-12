@@ -95,9 +95,13 @@ class ProgressiveEnhancement {
    */
   private assessPerformance(): 'low' | 'medium' | 'high' {
     // Basic performance assessment
-    const memory = (navigator as any).deviceMemory || 4;
+    const nav = navigator as Navigator & {
+      deviceMemory?: number;
+      connection?: { effectiveType?: string };
+    };
+    const memory = nav.deviceMemory || 4;
     const cores = navigator.hardwareConcurrency || 4;
-    const connection = (navigator as any).connection?.effectiveType || '4g';
+    const connection = nav.connection?.effectiveType || '4g';
 
     let score = 0;
 
@@ -220,7 +224,7 @@ class ProgressiveEnhancement {
    * Dynamically load polyfills for missing features
    */
   public async loadPolyfills(): Promise<void> {
-    const polyfills: Promise<any>[] = [];
+    const polyfills: Promise<unknown>[] = [];
 
     // View Transitions polyfill
     if (!this.features.viewTransitions) {

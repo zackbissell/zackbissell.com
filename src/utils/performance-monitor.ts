@@ -86,14 +86,17 @@ class PerformanceMonitor {
    * Assess device capabilities for optimization
    */
   private assessDeviceCapabilities() {
-    const navigator = window.navigator as any;
+    const nav = window.navigator as Navigator & {
+      deviceMemory?: number;
+      connection?: { effectiveType?: string };
+    };
     
     return {
-      cores: navigator.hardwareConcurrency || 4,
-      memory: navigator.deviceMemory || 4, // GB
+      cores: nav.hardwareConcurrency || 4,
+      memory: nav.deviceMemory || 4, // GB
       gpu: this.getGPUInfo(),
       pixelRatio: window.devicePixelRatio || 1,
-      effectiveType: navigator.connection?.effectiveType || '4g'
+      effectiveType: nav.connection?.effectiveType || '4g'
     };
   }
 
@@ -398,10 +401,10 @@ class PerformanceMonitor {
     let changed = false;
     
     if (this.qualitySettings.shadowQuality !== 'disabled') {
-      const qualities = ['high', 'medium', 'low', 'disabled'];
+      const qualities: Array<'high' | 'medium' | 'low' | 'disabled'> = ['high', 'medium', 'low', 'disabled'];
       const currentIndex = qualities.indexOf(this.qualitySettings.shadowQuality);
       if (currentIndex < qualities.length - 1) {
-        this.qualitySettings.shadowQuality = qualities[currentIndex + 1] as any;
+        this.qualitySettings.shadowQuality = qualities[currentIndex + 1];
         changed = true;
       }
     }
@@ -449,10 +452,10 @@ class PerformanceMonitor {
     }
     
     if (this.qualitySettings.shadowQuality !== 'high') {
-      const qualities = ['disabled', 'low', 'medium', 'high'];
+      const qualities: Array<'disabled' | 'low' | 'medium' | 'high'> = ['disabled', 'low', 'medium', 'high'];
       const currentIndex = qualities.indexOf(this.qualitySettings.shadowQuality);
       if (currentIndex > 0) {
-        this.qualitySettings.shadowQuality = qualities[currentIndex - 1] as any;
+        this.qualitySettings.shadowQuality = qualities[currentIndex - 1];
         changed = true;
       }
     }
@@ -574,7 +577,13 @@ class PerformanceMonitor {
   exportPerformanceData(): {
     profiles: PerformanceProfile[];
     alerts: PerformanceAlert[];
-    deviceCapabilities: any;
+    deviceCapabilities: {
+      cores: number;
+      memory: number;
+      gpu: string;
+      pixelRatio: number;
+      effectiveType: string;
+    };
     qualitySettings: AdaptiveQualitySettings;
   } {
     return {

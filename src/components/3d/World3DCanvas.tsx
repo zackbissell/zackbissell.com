@@ -13,6 +13,10 @@ import { useSpatialGestures, type GestureEvent } from '../../utils/spatial-gestu
 import { spatialAudio } from '../../utils/spatial-audio';
 import { haptics } from '../../utils/haptics';
 import WorldScene, { type InteractionEvent } from '../../utils/world-scene';
+import { DiscoAscensionScene } from '../../utils/world-scenes/disco-ascension-scene';
+import { NostalgiaTrapScene } from '../../utils/world-scenes/nostalgia-trap-scene';
+import { RoleModelScene } from '../../utils/world-scenes/role-model-scene';
+import { ElevationScene } from '../../utils/world-scenes/elevation-scene';
 
 interface World3DCanvasProps {
   world: 'disco' | 'nostalgia' | 'rolemodel' | 'elevation';
@@ -31,87 +35,19 @@ interface World3DCanvasProps {
   onSceneReady?: (scene: WorldScene) => void;
 }
 
-// Demo World Scene for testing the foundation
-class DemoWorldScene extends WorldScene {
-  private cube: THREE.Mesh | null = null;
-  private rotationSpeed = 0.01;
-
-  async initializeWorld(): Promise<void> {
-    // Create a simple demo cube to test the system
-    const geometry = new THREE.BoxGeometry(2, 2, 2);
-    const material = new THREE.MeshPhongMaterial({ 
-      color: this.getWorldColor(),
-      transparent: true,
-      opacity: 0.8
-    });
-    
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
-    
-    // Add to audio reactive objects
-    this.audioReactiveObjects.push(this.cube);
-    
-    console.log(`${this.config.name} demo world initialized`);
-  }
-
-  updateWorld(deltaTime: number, audioData: any): void {
-    if (this.cube) {
-      // Rotate the cube
-      this.cube.rotation.x += this.rotationSpeed;
-      this.cube.rotation.y += this.rotationSpeed * 0.7;
-      
-      // React to audio if available
-      if (audioData) {
-        const scale = 1 + audioData.energy.total * 0.5;
-        this.cube.scale.set(scale, scale, scale);
-        
-        // Change rotation speed based on BPM
-        this.rotationSpeed = 0.01 + (audioData.bpm / 1000);
-      }
-    }
-  }
-
-  handleInteraction(event: InteractionEvent): void {
-    if (event.type === 'click' && this.cube) {
-      // Trigger haptic feedback
-      haptics.trigger({ intensity: 'medium' });
-      
-      // Play spatial audio
-      spatialAudio.ui.buttonClick();
-      
-      // Animate cube
-      this.cube.rotation.z += Math.PI / 4;
-    }
-  }
-
-  handleAudioEvent(audioData: any): void {
-    if (audioData.onset && this.cube) {
-      // Flash the cube on beat
-      const material = this.cube.material as THREE.MeshPhongMaterial;
-      material.emissive.setHex(0x444444);
-      
-      setTimeout(() => {
-        material.emissive.setHex(0x000000);
-      }, 100);
-    }
-  }
-
-  private getWorldColor(): number {
-    switch (this.config.name) {
-      case 'disco': return 0xf59e0b; // Amber
-      case 'nostalgia': return 0xa855f7; // Purple
-      case 'rolemodel': return 0xeab308; // Yellow
-      case 'elevation': return 0x0ea5e9; // Blue
-      default: return 0xffffff;
-    }
-  }
-
-  dispose(): void {
-    if (this.cube) {
-      this.scene.remove(this.cube);
-      this.cube.geometry.dispose();
-      (this.cube.material as THREE.Material).dispose();
-    }
+// Factory function to create the appropriate world scene
+function createWorldScene(world: 'disco' | 'nostalgia' | 'rolemodel' | 'elevation'): WorldScene {
+  switch (world) {
+    case 'disco':
+      return new DiscoAscensionScene();
+    case 'nostalgia':
+      return new NostalgiaTrapScene();
+    case 'rolemodel':
+      return new RoleModelScene();
+    case 'elevation':
+      return new ElevationScene();
+    default:
+      throw new Error(`Unknown world: ${world}`);
   }
 }
 
@@ -124,7 +60,7 @@ export default function World3DCanvas({
   onSceneReady,
 }: World3DCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const sceneRef = useRef<DemoWorldScene | null>(null);
+  const sceneRef = useRef<WorldScene | null>(null);
   const animationFrameRef = useRef<number>();
   
   const { isReady, capabilities, engine } = useWebGL(canvasRef.current);
@@ -164,7 +100,7 @@ export default function World3DCanvas({
 
     const initScene = async () => {
       try {
-        sceneRef.current = new DemoWorldScene(world);
+        sceneRef.current = createWorldScene(world);
         await sceneRef.current.initializeWorld();
         
         setIsSceneReady(true);
