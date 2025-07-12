@@ -17,6 +17,7 @@ import { DiscoAscensionScene } from '../../utils/world-scenes/disco-ascension-sc
 import { NostalgiaTrapScene } from '../../utils/world-scenes/nostalgia-trap-scene';
 import { RoleModelScene } from '../../utils/world-scenes/role-model-scene';
 import { ElevationScene } from '../../utils/world-scenes/elevation-scene';
+import CinematicControls from './CinematicControls';
 
 interface World3DCanvasProps {
   world: 'disco' | 'nostalgia' | 'rolemodel' | 'elevation';
@@ -68,6 +69,7 @@ export default function World3DCanvas({
   
   const [isSceneReady, setIsSceneReady] = useState(false);
   const [showFallback, setShowFallback] = useState(false);
+  const [showCinematicControls, setShowCinematicControls] = useState(false);
 
   // Handle gestures if interactions are enabled
   const gestureRef = useSpatialGestures(
@@ -268,7 +270,7 @@ export default function World3DCanvas({
       </AnimatePresence>
 
       {/* Interaction hint */}
-      {enableInteractions && isSceneReady && (
+      {enableInteractions && isSceneReady && !showCinematicControls && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
@@ -278,6 +280,13 @@ export default function World3DCanvas({
           Click to interact
         </motion.div>
       )}
+
+      {/* A24 Cinematic Controls */}
+      <CinematicControls
+        scene={sceneRef.current}
+        isVisible={showCinematicControls}
+        onToggle={() => setShowCinematicControls(!showCinematicControls)}
+      />
     </div>
   );
 }

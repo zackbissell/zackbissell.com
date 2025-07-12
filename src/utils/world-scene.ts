@@ -8,6 +8,7 @@ import * as THREE from 'three';
 import { webglEngine, type WorldConfig, type AudioAnalysis, type PerformanceMetrics } from './webgl-engine';
 import { spatialAudio } from './spatial-audio';
 import { haptics } from './haptics';
+import { CinematicController, type CameraMode, type CinematicMood, type WorldTheme } from './cinematic/cinematic-controller';
 
 interface InteractionEvent {
   type: 'click' | 'hover' | 'scroll' | 'audio' | 'gesture';
@@ -65,6 +66,7 @@ abstract class WorldScene {
   protected clock: THREE.Clock;
   
   // A24 Cinematic System
+  protected cinematicController: CinematicController | null = null;
   protected cinematicCamera: CinematicCamera;
   protected cameraController: THREE.Object3D | null = null;
   protected depthOfField: THREE.Object3D | null = null;
@@ -103,6 +105,13 @@ abstract class WorldScene {
       window.innerWidth / window.innerHeight,
       this.cinematicCamera.near,
       this.cinematicCamera.far
+    );
+    
+    // Initialize A24 Cinematic Controller
+    this.cinematicController = new CinematicController(
+      this.camera,
+      this.scene,
+      worldName as WorldTheme
     );
     
     // Initialize lighting system
@@ -420,6 +429,11 @@ abstract class WorldScene {
     const deltaTime = this.clock.getDelta();
     this.uniformTime.value = this.clock.getElapsedTime();
     
+    // Update A24 Cinematic Controller
+    if (this.cinematicController) {
+      this.cinematicController.update(deltaTime, audioData);
+    }
+    
     // Update animation mixers
     this.mixers.forEach(mixer => mixer.update(deltaTime));
     
@@ -507,7 +521,68 @@ abstract class WorldScene {
   getPerformanceMetrics(): PerformanceMetrics {
     return this.performanceMonitor;
   }
+
+  /**
+   * A24 Cinematic Controller Methods
+   */
+
+  /**
+   * Start a cinematic sequence
+   */
+  startCinematicSequence(sequenceName: string): void {
+    this.cinematicController?.startSequence(sequenceName);
+  }
+
+  /**
+   * Set camera mode for cinematography
+   */
+  setCameraMode(mode: CameraMode): void {
+    this.cinematicController?.setCameraMode(mode);
+  }
+
+  /**
+   * Set emotional state affecting cinematography
+   */
+  setEmotionalState(state: CinematicMood): void {
+    this.cinematicController?.setEmotionalState(state);
+  }
+
+  /**
+   * Trigger camera shake effect
+   */
+  triggerCameraShake(intensity: number, duration?: number): void {
+    this.cinematicController?.triggerShake(intensity, duration);
+  }
+
+  /**
+   * Switch to specific shot
+   */
+  switchToShot(shotIndex: number): void {
+    this.cinematicController?.switchToShot(shotIndex);
+  }
+
+  /**
+   * Get current cinematic state
+   */
+  getCinematicState() {
+    return this.cinematicController?.getCinematicState() || null;
+  }
+
+  /**
+   * Get cinematic controller for advanced control
+   */
+  getCinematicController(): CinematicController | null {
+    return this.cinematicController;
+  }
 }
 
 export default WorldScene;
-export type { InteractionEvent, CinematicCamera, WorldLighting, ParticleSystemConfig };
+export type { 
+  InteractionEvent, 
+  CinematicCamera, 
+  WorldLighting, 
+  ParticleSystemConfig,
+  CameraMode,
+  CinematicMood,
+  WorldTheme
+};

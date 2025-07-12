@@ -8,6 +8,8 @@ import Tracklist from '../components/ui/Tracklist';
 import { EmotionalPromptModal, MoodSelector } from '../components/ui/InteractiveModal';
 import { NostalgiaAudioPlayer } from '../components/ui/AudioPlayer';
 import { EmotionalBadge } from '../components/ui/badge';
+import ImmersiveWorldModal from '../components/3d/ImmersiveWorldModal';
+import WorldEntryButton from '../components/ui/WorldEntryButton';
 import { heroContent, emotionalJourney, moodOptions, tracklist, audioData } from '../content/nostalgiaTrapData';
 
 const NostalgiaTrap = () => {
@@ -15,6 +17,7 @@ const NostalgiaTrap = () => {
   const [showPrompt, setShowPrompt] = useState(true);
   const [currentPhase, setCurrentPhase] = useState('glow');
   const [hasEnteredJourney, setHasEnteredJourney] = useState(false);
+  const [showImmersiveWorld, setShowImmersiveWorld] = useState(false);
 
   const handleEmotionalContinue = (state: string) => {
     setEmotionalState(state);
@@ -107,6 +110,22 @@ const NostalgiaTrap = () => {
                 </p>
               </div>
             </motion.div>
+
+            {/* 3D Experience Entry Point */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="flex justify-center"
+            >
+              <WorldEntryButton
+                world="nostalgia"
+                variant="hero"
+                showPreview={true}
+                onClick={() => setShowImmersiveWorld(true)}
+                className="max-w-md"
+              />
+            </motion.div>
           </div>
         </motion.section>
 
@@ -128,14 +147,22 @@ const NostalgiaTrap = () => {
         {/* Emotional Journey Architecture */}
         <section className="section-padding">
           <div className="content-container">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-title1 text-center mb-16 text-foreground"
-            >
-              The <span className="bg-gradient-to-r from-nostalgia-primary to-nostalgia-secondary bg-clip-text text-transparent">Emotional Architecture</span>
-            </motion.h2>
+            <div className="flex items-center justify-between mb-16">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-title1 text-foreground"
+              >
+                The <span className="bg-gradient-to-r from-nostalgia-primary to-nostalgia-secondary bg-clip-text text-transparent">Emotional Architecture</span>
+              </motion.h2>
+              
+              <WorldEntryButton
+                world="nostalgia"
+                variant="minimal"
+                onClick={() => setShowImmersiveWorld(true)}
+              />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               {emotionalJourney.phases.map((phase, index) => (
@@ -344,6 +371,23 @@ const NostalgiaTrap = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* Floating 3D Entry */}
+        <WorldEntryButton
+          world="nostalgia"
+          variant="floating"
+          onClick={() => setShowImmersiveWorld(true)}
+        />
+
+        {/* Immersive 3D World Modal */}
+        <ImmersiveWorldModal
+          world="nostalgia"
+          isOpen={showImmersiveWorld}
+          onClose={() => setShowImmersiveWorld(false)}
+          worldTitle="Nostalgia Trap"
+          worldSubtitle="A DJ Mix for the Emotionally Unstable"
+          storyContext="Think of someone who left you wrecked. Hold that thought. Feel it in your chest. Now press play."
+        />
       </Layout>
     </div>
   );

@@ -4,9 +4,12 @@ import { Helmet } from 'react-helmet';
 import { Play, Coffee, Zap, AlertTriangle, Clock, FileText, Radio } from 'lucide-react';
 import Layout from '../components/global/Layout';
 import Tracklist from '../components/ui/Tracklist';
+import ImmersiveWorldModal from '../components/3d/ImmersiveWorldModal';
+import WorldEntryButton from '../components/ui/WorldEntryButton';
 
 const RoleModel = () => {
   const [showLegalDisclaimer, setShowLegalDisclaimer] = useState(false);
+  const [showImmersiveWorld, setShowImmersiveWorld] = useState(false);
 
   const tracklist = [
     { artist: "Mr. G", title: "All U Need", time: "00:00" },
@@ -54,6 +57,17 @@ const RoleModel = () => {
             <h2 className="text-title1 text-gray-300 mb-8">
               What Happens When Instinct Takes Over
             </h2>
+
+            {/* 3D Experience Entry Point */}
+            <div className="flex justify-center mt-8">
+              <WorldEntryButton
+                world="rolemodel"
+                variant="hero"
+                showPreview={true}
+                onClick={() => setShowImmersiveWorld(true)}
+                className="max-w-md"
+              />
+            </div>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -226,9 +240,17 @@ const RoleModel = () => {
       {/* The Breakdown */}
       <section className="section-padding bg-black">
         <div className="content-container">
-          <h2 className="text-title1 text-center mb-16 text-white">
-            The <span className="gradient-text">Chaos Timeline</span>
-          </h2>
+          <div className="flex items-center justify-between mb-16">
+            <h2 className="text-title1 text-white">
+              The <span className="gradient-text">Chaos Timeline</span>
+            </h2>
+            
+            <WorldEntryButton
+              world="rolemodel"
+              variant="minimal"
+              onClick={() => setShowImmersiveWorld(true)}
+            />
+          </div>
 
           <div className="max-w-4xl mx-auto space-y-8">
             {[
@@ -326,6 +348,23 @@ const RoleModel = () => {
           </div>
         </div>
       </section>
+
+      {/* Floating 3D Entry */}
+      <WorldEntryButton
+        world="rolemodel"
+        variant="floating"
+        onClick={() => setShowImmersiveWorld(true)}
+      />
+
+      {/* Immersive 3D World Modal */}
+      <ImmersiveWorldModal
+        world="rolemodel"
+        isOpen={showImmersiveWorld}
+        onClose={() => setShowImmersiveWorld(false)}
+        worldTitle="Role Model"
+        worldSubtitle="What Happens When Instinct Takes Over"
+        storyContext="There's 'improvised,' and then there's whatever this is. But it's good. One take. No prep. No regrets."
+      />
     </Layout>
   );
 };
