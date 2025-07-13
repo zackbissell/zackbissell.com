@@ -831,3 +831,54 @@
   );
   mix-blend-mode: overlay;
 }
+
+/* Missing utility classes */
+.content-container-wide {
+  margin: 0 auto;
+  max-width: min(95vw, 1600px);
+  padding-inline: var(--fluid-space-m);
+  container-type: inline-size;
+}
+
+.accent-underline {
+  background: linear-gradient(90deg, transparent 0%, transparent 40%, var(--brand-primary) 40%, var(--brand-primary) 100%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position 0.3s var(--spring-smooth);
+}
+
+.accent-underline:hover {
+  background-position: 0 0;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-primary text-background font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent border-2 border-brand-primary text-brand-primary font-semibold rounded-lg transition-all duration-300 hover:bg-brand-primary hover:text-background hover:scale-105 active:scale-95;
+}
+
+.bg-background-secondary {
+  background: var(--background-elevated-1);
+}
+
+.border-border-secondary {
+  border-color: var(--foreground-quaternary);
+}
+
+.text-foreground-secondary {
+  color: var(--foreground-secondary);
+}
+
+.text-foreground-tertiary {
+  color: var(--foreground-tertiary);
+}
+
+.text-subheadline {
+  @apply text-sm font-medium text-foreground-secondary;
+}
+
+.world-card {
+  @apply bg-background-elevated-1 border border-foreground-quaternary rounded-xl p-6 backdrop-blur-sm;
+}

@@ -18,52 +18,73 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        "foreground-secondary": "hsl(var(--foreground-secondary))",
-        "foreground-tertiary": "hsl(var(--foreground-tertiary))",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        "foreground-secondary": "var(--foreground-secondary)",
+        "foreground-tertiary": "var(--foreground-tertiary)",
+        "foreground-quaternary": "var(--foreground-quaternary)",
+        "background-elevated-1": "var(--background-elevated-1)",
+        "background-elevated-2": "var(--background-elevated-2)",
+        "background-elevated-3": "var(--background-elevated-3)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))"
+          DEFAULT: "var(--brand-primary)",
+          foreground: "var(--background)"
         },
         // Brand colors
         brand: {
-          primary: "hsl(var(--brand-primary))"
+          primary: "var(--brand-primary)"
         },
         // World-specific colors
         disco: {
-          primary: "hsl(var(--disco-primary))",
-          secondary: "hsl(var(--disco-secondary))",
-          danger: "hsl(var(--disco-danger))",
-          warning: "hsl(var(--disco-warning))",
-          classified: "hsl(var(--disco-classified))"
+          primary: "var(--disco-primary)",
+          secondary: "var(--disco-secondary)",
+          danger: "var(--disco-danger)",
+          classified: "var(--disco-classified)",
+          glitch: "var(--disco-glitch)"
         },
         nostalgia: {
-          primary: "hsl(var(--nostalgia-primary))",
-          secondary: "hsl(var(--nostalgia-secondary))",
-          accent: "hsl(var(--nostalgia-accent))",
-          heartbreak: "hsl(var(--nostalgia-heartbreak))"
+          primary: "var(--nostalgia-primary)",
+          secondary: "var(--nostalgia-secondary)",
+          heartbreak: "var(--nostalgia-heartbreak)",
+          memory: "var(--nostalgia-memory)",
+          tear: "var(--nostalgia-tear)"
         },
         rolemodel: {
-          primary: "hsl(var(--rolemodel-primary))",
-          secondary: "hsl(var(--rolemodel-secondary))",
-          chaos: "hsl(var(--rolemodel-chaos))"
+          primary: "var(--rolemodel-primary)",
+          secondary: "var(--rolemodel-secondary)",
+          chaos: "var(--rolemodel-chaos)",
+          unhinged: "var(--rolemodel-unhinged)",
+          coffee: "var(--rolemodel-coffee)"
         },
         elevation: {
-          primary: "hsl(var(--elevation-primary))",
-          secondary: "hsl(var(--elevation-secondary))",
-          ascend: "hsl(var(--elevation-ascend))"
+          primary: "var(--elevation-primary)",
+          secondary: "var(--elevation-secondary)",
+          ascend: "var(--elevation-ascend)",
+          gravity: "var(--elevation-gravity)",
+          purist: "var(--elevation-purist)"
         },
         // Semantic world colors
         world: {
-          primary: "hsl(var(--world-primary))",
-          secondary: "hsl(var(--world-secondary))",
-          accent: "hsl(var(--world-accent))"
-        }
+          primary: "var(--world-primary)",
+          secondary: "var(--world-secondary)",
+          accent: "var(--world-accent)"
+        },
+        destructive: "var(--destructive)",
+        success: "var(--success)"
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         heading: ['Inter', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fade-in-up 0.5s ease-out',
+        'glitch-reality': 'glitch-reality 0.8s infinite',
+        'emotional-heartbeat': 'emotional-heartbeat 2s infinite',
+        'memory-float': 'memory-float 4s ease-in-out infinite',
+        'chaos-explosion': 'chaos-explosion 1s infinite',
+        'elevation-float': 'elevation-float 3s ease-in-out infinite',
+        'cinematic-pulse': 'cinematic-pulse 4s ease-in-out infinite',
+        'spring-bounce': 'spring-bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
       }
     }
   },
