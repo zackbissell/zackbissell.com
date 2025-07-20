@@ -1,19 +1,12 @@
 name = "zackbissell-brand-hub"
 compatibility_date = "2024-07-01"
-compatibility_flags = ["nodejs_compat"]
+
+# Pages configuration
+pages_build_output_dir = "./dist"
 
 [assets]
 directory = "./dist"
-binding = "ASSETS"
-
-# Static site configuration
-[assets.not_found_handling]
-mode = "single-page-application"
-
-# R2 bucket binding for additional assets
-[[r2_buckets]]
-binding = "BUCKET"
-bucket_name = "main"
+not_found_handling = "single-page-application"
 
 # Build configuration
 [build]
