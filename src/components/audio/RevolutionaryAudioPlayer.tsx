@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { motion, AnimatePresence, startOptimizedAppearAnimation } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, Maximize2, Settings, Waves } from 'lucide-react';
 import { MixcloudPlayer } from './MixcloudPlayer';
 import AdvancedAudioVisualizer from './AdvancedAudioVisualizer';
@@ -111,31 +111,13 @@ export const RevolutionaryAudioPlayer: React.FC<RevolutionaryAudioPlayerProps> =
     setIsPlaying(false);
   }, []);
   
-  // Initialize optimized appear animation (MCP best practice)
+  // Enhanced initialization (fallback for MCP optimization)
   useEffect(() => {
     if (playerRef.current && enhancementsEnabled) {
-      // Use Framer Motion's optimized appear animation for SSR
+      // Simple CSS-based initialization
       const element = playerRef.current;
-      
-      startOptimizedAppearAnimation(
-        element,
-        "opacity",
-        [0, 1],
-        {
-          duration: 800,
-          ease: "linear",
-        }
-      );
-      
-      startOptimizedAppearAnimation(
-        element,
-        "transform",
-        ["translateY(20px) scale(0.95)", "translateY(0px) scale(1)"],
-        {
-          duration: 600,
-          ease: "easeOut",
-        }
-      );
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0px) scale(1)';
     }
   }, [enhancementsEnabled]);
   
