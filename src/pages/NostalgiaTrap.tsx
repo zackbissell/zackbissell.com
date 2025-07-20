@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Play, Heart, AlertCircle, Clock, Music, Share } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Layout from '../components/global/Layout';
+import WorldNavigation from '../components/global/WorldNavigation';
 import Tracklist from '../components/ui/Tracklist';
 import { EmotionalPromptModal, MoodSelector } from '../components/ui/InteractiveModal';
 import { NostalgiaAudioPlayer } from '../components/ui/AudioPlayer';
@@ -371,6 +372,9 @@ const NostalgiaTrap = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* World Navigation */}
+        <WorldNavigation currentWorldId="nostalgia" className="bg-background-secondary" />
 
         {/* Floating 3D Entry */}
         <WorldEntryButton

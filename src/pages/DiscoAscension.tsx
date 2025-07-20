@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Layout from '../components/global/Layout';
+import WorldNavigation from '../components/global/WorldNavigation';
 import HeroDisco from '../components/worlds/disco-ascension/HeroDisco';
-import AudioPlayerDisco from '../components/worlds/disco-ascension/AudioPlayerDisco';
+import RevolutionaryAudioPlayer from '../components/audio/RevolutionaryAudioPlayer';
 import IncidentLog from '../components/worlds/disco-ascension/IncidentLog';
 import TracklistDisco from '../components/worlds/disco-ascension/TracklistDisco';
 import ShareCTA from '../components/worlds/disco-ascension/ShareCTA';
 import ImmersiveWorldModal from '../components/3d/ImmersiveWorldModal';
 import WorldEntryButton from '../components/ui/WorldEntryButton';
-import { heroContent, tracklist, incidentLog } from '../content/discoAscensionData';
+import { heroContent, tracklist, incidentLog, audioConfig } from '../content/discoAscensionData';
 
 export default function DiscoAscension() {
   const [showImmersiveWorld, setShowImmersiveWorld] = useState(false);
@@ -30,7 +31,17 @@ export default function DiscoAscension() {
       </div>
 
       <div className="container space-y-12 starfield-crt">
-        <AudioPlayerDisco src="https://example.com/audio.mp3" incidents={incidentLog} />
+        <RevolutionaryAudioPlayer
+          embedUrl={audioConfig.embedUrl}
+          title={audioConfig.title}
+          artist={audioConfig.artist}
+          worldTheme="disco"
+          classificationLevel={audioConfig.classification}
+          warningMessage={audioConfig.warningMessage}
+          showParticles={true}
+          showAdvancedVisualizer={true}
+          autoEnhance={true}
+        />
         
         {/* Additional 3D Entry Points */}
         <div className="flex justify-between items-center">
@@ -47,6 +58,9 @@ export default function DiscoAscension() {
       </div>
       
       <ShareCTA />
+
+      {/* World Navigation */}
+      <WorldNavigation currentWorldId="disco" className="bg-background-secondary" />
 
       {/* Floating 3D Entry */}
       <WorldEntryButton

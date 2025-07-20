@@ -81,30 +81,12 @@ const Home = () => {
       <div className="min-h-screen" style={{ background: 'var(--color-background-primary)' }}>
       {/* Hero Section - Apple HIG Editorial Style */}
       <section style={{ paddingTop: 'calc(var(--touch-target-min) + var(--space-8))', paddingBottom: 'var(--space-8)' }}>
-        <div className="container-apple">
-          <div className="text-center animate-fade-in">
-            <h1 
-              className="animate-fade-in"
-              style={{
-                fontFamily: 'var(--font-family-base)',
-                fontSize: 'var(--font-size-large-title)',
-                fontWeight: 'var(--font-weight-black)',
-                lineHeight: 'var(--line-height-tight)',
-                letterSpacing: '-0.02em',
-                color: 'var(--color-text-primary)',
-                marginBottom: 'var(--space-8)',
-                textAlign: 'left'
-              }}
-            >
+        <div className="content-container">
+          <div className="text-center animate-fade-in-up">
+            <h1 className="text-large-title text-foreground mb-8 text-left">
               It all begins <br />
               with a{' '}
-              <span 
-                className="accent-underline"
-                style={{ 
-                  color: 'var(--brand-orange)',
-                  position: 'relative'
-                }}
-              >
+              <span className="accent-underline" style={{ color: 'var(--brand-orange)' }}>
                 story
               </span>
               .
@@ -114,110 +96,35 @@ const Home = () => {
       </section>
 
       {/* Ethos Section - Apple HIG Enhanced */}
-      <section 
-        style={{ 
-          paddingTop: 'var(--space-16)', 
-          paddingBottom: 'var(--space-16)',
-          background: 'var(--color-background-secondary)'
-        }}
-      >
-        <div className="container-apple text-center">
-          <h2 
-            style={{
-              fontFamily: 'var(--font-family-base)',
-              fontSize: 'var(--font-size-title2)',
-              fontWeight: 'var(--font-weight-bold)',
-              lineHeight: 'var(--line-height-snug)',
-              color: 'var(--color-text-primary)',
-              marginBottom: 'var(--space-8)',
-              textAlign: 'left'
-            }}
-          >
+      <section className="section-padding bg-background-secondary">
+        <div className="content-container text-center">
+          <h2 className="text-title2 text-foreground mb-8 text-left">
             My Ethos
           </h2>
-          <p 
-            className="max-w-3xl mx-auto"
-            style={{
-              fontFamily: 'var(--font-family-base)',
-              fontSize: 'var(--font-size-body-large)',
-              fontWeight: 'var(--font-weight-regular)',
-              lineHeight: 'var(--line-height-relaxed)',
-              color: 'var(--color-text-primary)',
-              marginBottom: 'var(--space-8)',
-              textAlign: 'left'
-            }}
-          >
+          <p className="text-body-large text-foreground max-w-3xl mx-auto mb-8 text-left">
             Each mix is sparked by a feeling,{' '}
-            <span 
-              className="accent-underline"
-              style={{ color: 'var(--brand-orange)' }}
-            >
+            <span className="accent-underline" style={{ color: 'var(--brand-orange)' }}>
               an emotion
             </span>
             , a story—crafted to transport you.
           </p>
-          <div className="max-w-4xl mx-auto">
-            <p 
-              style={{
-                fontFamily: 'var(--font-family-base)',
-                fontSize: 'var(--font-size-body)',
-                fontWeight: 'var(--font-weight-regular)',
-                lineHeight: 'var(--line-height-relaxed)',
-                color: 'var(--color-text-primary)',
-                marginBottom: 'var(--space-8)',
-                textAlign: 'left'
-              }}
-            >
+          <div className="max-w-4xl mx-auto space-y-8">
+            <p className="text-body text-foreground text-left">
               From the festival stage to intimate venues, and now through this{' '}
-              <span 
-                className="accent-underline"
-                style={{ color: 'var(--brand-orange)' }}
-              >
+              <span className="accent-underline" style={{ color: 'var(--brand-orange)' }}>
                 immersive
               </span>{' '}
               experience, every beat is designed to connect.
             </p>
-            <p 
-              style={{
-                fontFamily: 'var(--font-family-base)',
-                fontSize: 'var(--font-size-title3)',
-                fontWeight: 'var(--font-weight-semibold)',
-                lineHeight: 'var(--line-height-normal)',
-                color: 'var(--color-text-primary)',
-                marginBottom: 'var(--space-12)',
-                textAlign: 'left'
-              }}
-            >
+            <p className="text-title3 text-foreground text-left">
               But that's just the beginning.
             </p>
-            <p 
-              style={{
-                fontFamily: 'var(--font-family-base)',
-                fontSize: 'var(--font-size-body)',
-                fontWeight: 'var(--font-weight-regular)',
-                lineHeight: 'var(--line-height-relaxed)',
-                color: 'var(--color-text-primary)',
-                marginBottom: 'var(--space-12)',
-                textAlign: 'left'
-              }}
-            >
+            <p className="text-body text-foreground text-left">
               Explore below and let the music take you on a journey uniquely yours.
             </p>
-            <p 
-              style={{
-                fontFamily: 'var(--font-family-base)',
-                fontSize: 'var(--font-size-title3)',
-                fontWeight: 'var(--font-weight-semibold)',
-                lineHeight: 'var(--line-height-normal)',
-                color: 'var(--color-text-primary)',
-                textAlign: 'left'
-              }}
-            >
+            <p className="text-title3 text-foreground text-left">
               This story is{' '}
-              <span 
-                className="accent-underline"
-                style={{ color: 'var(--brand-orange)' }}
-              >
+              <span className="accent-underline" style={{ color: 'var(--brand-orange)' }}>
                 yours
               </span>{' '}
               to experience.
@@ -227,40 +134,13 @@ const Home = () => {
       </section>
 
       {/* Call to Action - Apple HIG Enhanced */}
-      <section 
-        style={{ 
-          paddingTop: 'var(--space-16)', 
-          paddingBottom: 'var(--space-16)'
-        }}
-      >
-        <div className="container-apple text-center">
+      <section className="section-padding">
+        <div className="content-container text-center">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/media" 
-              className="btn-apple-primary inline-flex items-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
-              style={{
-                minHeight: 'var(--touch-target-min)',
-                paddingLeft: 'var(--space-4)',
-                paddingRight: 'var(--space-4)',
-                fontFamily: 'var(--font-family-base)',
-                fontSize: 'var(--font-size-body)',
-                fontWeight: 'var(--font-weight-semibold)'
-              }}
-            >
+            <Link to="/media" className="btn-primary">
               MEDIA PAGE
             </Link>
-            <Link 
-              to="/media" 
-              className="btn-apple-secondary inline-flex items-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
-              style={{
-                minHeight: 'var(--touch-target-min)',
-                paddingLeft: 'var(--space-4)',
-                paddingRight: 'var(--space-4)',
-                fontFamily: 'var(--font-family-base)',
-                fontSize: 'var(--font-size-body)',
-                fontWeight: 'var(--font-weight-medium)'
-              }}
-            >
+            <Link to="/epk" className="btn-secondary">
               EPK DOWNLOAD
             </Link>
           </div>
@@ -298,12 +178,17 @@ const Home = () => {
                   —watch it now on YouTube and experience the mix in a whole new way.
                 </p>
                 <div className="flex gap-4">
-                  <button className="btn-primary">
+                  <a 
+                    href="https://youtube.com/watch?v=example" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                  >
                     Watch The Film
-                  </button>
-                  <button className="btn-secondary">
+                  </a>
+                  <Link to="/house-work" className="btn-secondary">
                     Experience The Mix
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -321,9 +206,9 @@ const Home = () => {
                   transitions that bring you deeper into the journey. Click below to join me at upcoming 
                   shows and be part of the story weekly as it unfolds.
                 </p>
-                <button className="btn-primary">
+                <Link to="/booking" className="btn-primary">
                   Join The Journey
-                </button>
+                </Link>
               </div>
 
               <div>
@@ -335,9 +220,9 @@ const Home = () => {
                 <p className="text-body mb-6">
                   Catch a story, vibe with a mix, and see what's coming.
                 </p>
-                <button className="btn-primary">
+                <Link to="/media" className="btn-primary">
                   Explore The Mixes
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Play, Coffee, Zap, AlertTriangle, Clock, FileText, Radio } from 'lucide-react';
 import Layout from '../components/global/Layout';
+import WorldNavigation from '../components/global/WorldNavigation';
 import Tracklist from '../components/ui/Tracklist';
 import ImmersiveWorldModal from '../components/3d/ImmersiveWorldModal';
 import WorldEntryButton from '../components/ui/WorldEntryButton';
@@ -348,6 +349,9 @@ const RoleModel = () => {
           </div>
         </div>
       </section>
+
+      {/* World Navigation */}
+      <WorldNavigation currentWorldId="rolemodel" className="bg-background-secondary" />
 
       {/* Floating 3D Entry */}
       <WorldEntryButton
