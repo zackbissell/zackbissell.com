@@ -61,17 +61,17 @@
     --fluid-text-5xl: clamp(3rem, 2.2rem + 3.5vw, 6rem);
     --fluid-text-6xl: clamp(3.75rem, 2.5rem + 5.5vw, 8rem);
 
-    /* P3 Wide Color Gamut Support */
-    --background: color(display-p3 0.02 0.02 0.04);
-    --background-elevated-1: color(display-p3 0.05 0.05 0.08);
-    --background-elevated-2: color(display-p3 0.08 0.08 0.12);
-    --background-elevated-3: color(display-p3 0.12 0.12 0.16);
+    /* Compatible Color System (RGB fallbacks for P3) */
+    --background: rgb(5, 5, 10);
+    --background-elevated-1: rgb(13, 13, 20);
+    --background-elevated-2: rgb(20, 20, 31);
+    --background-elevated-3: rgb(31, 31, 41);
     
-    /* Advanced Typography Colors */
-    --foreground: color(display-p3 0.96 0.96 0.97); /* Primary text */
-    --foreground-secondary: color(display-p3 0.63 0.63 0.65); /* Secondary */
-    --foreground-tertiary: color(display-p3 0.43 0.43 0.45); /* Tertiary */
-    --foreground-quaternary: color(display-p3 0.28 0.28 0.30); /* Disabled */
+    /* Typography Colors */
+    --foreground: rgb(245, 245, 247); /* Primary text */
+    --foreground-secondary: rgb(161, 161, 166); /* Secondary */
+    --foreground-tertiary: rgb(110, 110, 115); /* Tertiary */
+    --foreground-quaternary: rgb(71, 71, 77); /* Disabled */
 
     /* Glass Morphism System */
     --glass-light: rgba(255, 255, 255, 0.1);
@@ -100,44 +100,44 @@
     --brand-orange: #CC6544; /* PRESERVED: Primary brand color */
     --brand-orange-light: #E07A54; /* PRESERVED: Light variant */
     --brand-orange-dark: #B85A3A; /* PRESERVED: Dark variant */
-    --destructive: color(display-p3 0.94 0.27 0.27); /* Enhanced red */
-    --success: color(display-p3 0.13 0.60 0.22); /* Enhanced green */
+    --destructive: rgb(240, 69, 69); /* Enhanced red */
+    --success: rgb(33, 153, 56); /* Enhanced green */
     
-    /* Revolutionary World Color Palettes - P3 Enhanced */
+    /* Revolutionary World Color Palettes - RGB Compatible */
     
-    /* Disco Ascension - Conspiracy Reality with P3 */
-    --disco-primary: color(display-p3 0.96 0.62 0.11); /* Enhanced amber */
-    --disco-secondary: color(display-p3 0.92 0.34 0.05); /* Deep orange-red */
-    --disco-danger: color(display-p3 0.94 0.27 0.27); /* Alert red */
-    --disco-classified: color(display-p3 0.0 0.8 0.4); /* Terminal green */
-    --disco-glitch: color(display-p3 1.0 0.0 0.5); /* Neon pink */
+    /* Disco Ascension - Conspiracy Reality */
+    --disco-primary: rgb(245, 158, 28); /* Enhanced amber */
+    --disco-secondary: rgb(235, 87, 13); /* Deep orange-red */
+    --disco-danger: rgb(240, 69, 69); /* Alert red */
+    --disco-classified: rgb(0, 204, 102); /* Terminal green */
+    --disco-glitch: rgb(255, 0, 128); /* Neon pink */
     --disco-shadow: rgba(245, 158, 11, 0.4);
     --disco-glass: rgba(245, 158, 11, 0.1);
     
     /* Nostalgia Trap - Emotional Spectrum */
-    --nostalgia-primary: color(display-p3 0.66 0.33 0.97); /* Deep purple */
-    --nostalgia-secondary: color(display-p3 0.93 0.29 0.60); /* Emotional pink */
-    --nostalgia-heartbreak: color(display-p3 0.96 0.25 0.37); /* Heartbreak red */
-    --nostalgia-memory: color(display-p3 0.8 0.6 0.9); /* Memory lavender */
-    --nostalgia-tear: color(display-p3 0.7 0.8 1.0); /* Tear blue */
+    --nostalgia-primary: rgb(168, 85, 247); /* Deep purple */
+    --nostalgia-secondary: rgb(237, 74, 153); /* Emotional pink */
+    --nostalgia-heartbreak: rgb(245, 64, 94); /* Heartbreak red */
+    --nostalgia-memory: rgb(204, 153, 230); /* Memory lavender */
+    --nostalgia-tear: rgb(179, 204, 255); /* Tear blue */
     --nostalgia-shadow: rgba(168, 85, 247, 0.3);
     --nostalgia-glass: rgba(168, 85, 247, 0.12);
     
     /* Role Model - Chaos Engine */
-    --rolemodel-primary: color(display-p3 0.92 0.70 0.03); /* Chaos yellow */
-    --rolemodel-secondary: color(display-p3 0.92 0.34 0.05); /* Orange energy */
-    --rolemodel-chaos: color(display-p3 0.98 0.45 0.09); /* Pure chaos */
-    --rolemodel-unhinged: color(display-p3 1.0 0.8 0.0); /* Unhinged gold */
-    --rolemodel-coffee: color(display-p3 0.4 0.2 0.1); /* Coffee molecule */
+    --rolemodel-primary: rgb(235, 179, 8); /* Chaos yellow */
+    --rolemodel-secondary: rgb(235, 87, 13); /* Orange energy */
+    --rolemodel-chaos: rgb(250, 115, 23); /* Pure chaos */
+    --rolemodel-unhinged: rgb(255, 204, 0); /* Unhinged gold */
+    --rolemodel-coffee: rgb(102, 51, 26); /* Coffee molecule */
     --rolemodel-shadow: rgba(234, 179, 8, 0.4);
     --rolemodel-glass: rgba(234, 179, 8, 0.08);
     
     /* Elevation - Anti-Gravity Spectrum */
-    --elevation-primary: color(display-p3 0.05 0.65 0.91); /* Sky blue */
-    --elevation-secondary: color(display-p3 0.96 0.62 0.11); /* Ascension amber */
-    --elevation-ascend: color(display-p3 0.0 1.0 1.0); /* Pure cyan */
-    --elevation-gravity: color(display-p3 0.2 0.8 1.0); /* Anti-gravity */
-    --elevation-purist: color(display-p3 0.6 0.6 0.6); /* Purist gray */
+    --elevation-primary: rgb(13, 166, 232); /* Sky blue */
+    --elevation-secondary: rgb(245, 158, 28); /* Ascension amber */
+    --elevation-ascend: rgb(0, 255, 255); /* Pure cyan */
+    --elevation-gravity: rgb(51, 204, 255); /* Anti-gravity */
+    --elevation-purist: rgb(153, 153, 153); /* Purist gray */
     --elevation-shadow: rgba(14, 165, 233, 0.3);
     --elevation-glass: rgba(14, 165, 233, 0.1);
 
