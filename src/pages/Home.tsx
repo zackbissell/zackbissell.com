@@ -78,53 +78,190 @@ const Home = () => {
       <Helmet>
         <title>Home – Zack Bissell</title>
       </Helmet>
-      <div className="min-h-screen bg-white">
-      {/* Hero Section - Editorial Style */}
-      <section className="pt-24 pb-16">
-        <div className="content-container">
+      <div className="min-h-screen" style={{ background: 'var(--color-background-primary)' }}>
+      {/* Hero Section - Apple HIG Editorial Style */}
+      <section style={{ paddingTop: 'calc(var(--touch-target-min) + var(--space-8))', paddingBottom: 'var(--space-8)' }}>
+        <div className="container-apple">
           <div className="text-center animate-fade-in">
-            <h1 className="text-large-title mb-8">
+            <h1 
+              className="animate-fade-in"
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-large-title)',
+                fontWeight: 'var(--font-weight-black)',
+                lineHeight: 'var(--line-height-tight)',
+                letterSpacing: '-0.02em',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-8)',
+                textAlign: 'left'
+              }}
+            >
               It all begins <br />
-              with a <span className="accent-underline">story</span>.
+              with a{' '}
+              <span 
+                className="accent-underline"
+                style={{ 
+                  color: 'var(--brand-orange)',
+                  position: 'relative'
+                }}
+              >
+                story
+              </span>
+              .
             </h1>
           </div>
         </div>
       </section>
 
-      {/* Ethos Section */}
-      <section className="section-padding bg-background-secondary">
-        <div className="content-container text-center">
-          <h2 className="text-title2 mb-8">My Ethos</h2>
-          <p className="text-body-large mb-8 max-w-3xl mx-auto">
-            Each mix is sparked by a feeling, <span className="accent-underline">an emotion</span>, a story—crafted to transport you.
+      {/* Ethos Section - Apple HIG Enhanced */}
+      <section 
+        style={{ 
+          paddingTop: 'var(--space-16)', 
+          paddingBottom: 'var(--space-16)',
+          background: 'var(--color-background-secondary)'
+        }}
+      >
+        <div className="container-apple text-center">
+          <h2 
+            style={{
+              fontFamily: 'var(--font-family-base)',
+              fontSize: 'var(--font-size-title2)',
+              fontWeight: 'var(--font-weight-bold)',
+              lineHeight: 'var(--line-height-snug)',
+              color: 'var(--color-text-primary)',
+              marginBottom: 'var(--space-8)',
+              textAlign: 'left'
+            }}
+          >
+            My Ethos
+          </h2>
+          <p 
+            className="max-w-3xl mx-auto"
+            style={{
+              fontFamily: 'var(--font-family-base)',
+              fontSize: 'var(--font-size-body-large)',
+              fontWeight: 'var(--font-weight-regular)',
+              lineHeight: 'var(--line-height-relaxed)',
+              color: 'var(--color-text-primary)',
+              marginBottom: 'var(--space-8)',
+              textAlign: 'left'
+            }}
+          >
+            Each mix is sparked by a feeling,{' '}
+            <span 
+              className="accent-underline"
+              style={{ color: 'var(--brand-orange)' }}
+            >
+              an emotion
+            </span>
+            , a story—crafted to transport you.
           </p>
           <div className="max-w-4xl mx-auto">
-            <p className="text-body mb-8">
+            <p 
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-body)',
+                fontWeight: 'var(--font-weight-regular)',
+                lineHeight: 'var(--line-height-relaxed)',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-8)',
+                textAlign: 'left'
+              }}
+            >
               From the festival stage to intimate venues, and now through this{' '}
-              <span className="accent-underline">immersive</span> experience, every beat is designed to connect.
+              <span 
+                className="accent-underline"
+                style={{ color: 'var(--brand-orange)' }}
+              >
+                immersive
+              </span>{' '}
+              experience, every beat is designed to connect.
             </p>
-            <p className="text-title3 font-semibold mb-12">
+            <p 
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-title3)',
+                fontWeight: 'var(--font-weight-semibold)',
+                lineHeight: 'var(--line-height-normal)',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-12)',
+                textAlign: 'left'
+              }}
+            >
               But that's just the beginning.
             </p>
-            <p className="text-body mb-12">
+            <p 
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-body)',
+                fontWeight: 'var(--font-weight-regular)',
+                lineHeight: 'var(--line-height-relaxed)',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-12)',
+                textAlign: 'left'
+              }}
+            >
               Explore below and let the music take you on a journey uniquely yours.
             </p>
-            <p className="text-title3">
-              This story is <span className="accent-underline">yours</span> to experience.
+            <p 
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-title3)',
+                fontWeight: 'var(--font-weight-semibold)',
+                lineHeight: 'var(--line-height-normal)',
+                color: 'var(--color-text-primary)',
+                textAlign: 'left'
+              }}
+            >
+              This story is{' '}
+              <span 
+                className="accent-underline"
+                style={{ color: 'var(--brand-orange)' }}
+              >
+                yours
+              </span>{' '}
+              to experience.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="section-padding">
-        <div className="content-container text-center">
+      {/* Call to Action - Apple HIG Enhanced */}
+      <section 
+        style={{ 
+          paddingTop: 'var(--space-16)', 
+          paddingBottom: 'var(--space-16)'
+        }}
+      >
+        <div className="container-apple text-center">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/about" className="btn-primary inline-flex items-center gap-2">
-              Media Page
+            <Link 
+              to="/media" 
+              className="btn-apple-primary inline-flex items-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
+              style={{
+                minHeight: 'var(--touch-target-min)',
+                paddingLeft: 'var(--space-4)',
+                paddingRight: 'var(--space-4)',
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-body)',
+                fontWeight: 'var(--font-weight-semibold)'
+              }}
+            >
+              MEDIA PAGE
             </Link>
-            <Link to="/disco-ascension" className="btn-secondary inline-flex items-center gap-2">
-              EPK Download
+            <Link 
+              to="/media" 
+              className="btn-apple-secondary inline-flex items-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
+              style={{
+                minHeight: 'var(--touch-target-min)',
+                paddingLeft: 'var(--space-4)',
+                paddingRight: 'var(--space-4)',
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-body)',
+                fontWeight: 'var(--font-weight-medium)'
+              }}
+            >
+              EPK DOWNLOAD
             </Link>
           </div>
         </div>

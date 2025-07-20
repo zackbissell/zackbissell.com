@@ -1,363 +1,496 @@
-import React, { useState } from 'react';
-import Layout from '@/components/global/Layout';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
   Download, 
-  Image as ImageIcon, 
-  Video, 
+  ExternalLink, 
+  Award, 
+  TrendingUp, 
+  Music2, 
+  Camera, 
   FileText,
-  Camera,
-  Palette,
-  Play,
-  ExternalLink,
-  Grid3X3,
-  List
+  Globe,
+  Instagram,
+  Twitter,
+  Youtube,
+  Play
 } from 'lucide-react';
+import ProfessionalLayout, { ProfessionalSection, ProfessionalCard, ProfessionalButton } from '../components/design-system/ProfessionalLayout';
 
 const Media = () => {
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const categories = [
-    { id: 'all', label: 'All Media', count: 24 },
-    { id: 'photos', label: 'Press Photos', count: 12 },
-    { id: 'logos', label: 'Logos & Branding', count: 6 },
-    { id: 'videos', label: 'Performance Videos', count: 4 },
-    { id: 'press', label: 'Press Materials', count: 2 }
-  ];
-
-  const mediaAssets = [
+  const achievements = [
     {
-      id: 1,
-      title: "Zack Bissell - Professional Headshot",
-      category: "photos",
-      type: "image",
-      resolution: "4000x6000",
-      format: "JPG",
-      size: "2.4 MB",
-      description: "High-resolution professional headshot for press and promotional use",
-      downloadUrl: "/media/press/zack-bissell-headshot-4k.jpg",
-      thumbnailUrl: "/media/thumbnails/zack-headshot-thumb.jpg",
-      tags: ["headshot", "professional", "press"]
+      title: '#1 Global Dance Punk',
+      description: '"nostalgia trap, reality slap" topped Mixcloud charts',
+      icon: Award,
+      color: 'var(--brand-orange)'
     },
     {
-      id: 2,
-      title: "Lab Obsidian Logo - Primary",
-      category: "logos", 
-      type: "vector",
-      resolution: "Vector",
-      format: "SVG",
-      size: "24 KB",
-      description: "Primary Lab Obsidian logo in vector format",
-      downloadUrl: "/media/logos/lab-obsidian-primary.svg",
-      thumbnailUrl: "/media/thumbnails/lab-obsidian-thumb.jpg",
-      tags: ["logo", "branding", "vector"]
+      title: '#43 Global Indie Dance',
+      description: 'Consistent top 100 charting across multiple mixes',
+      icon: TrendingUp,
+      color: 'var(--brand-orange)'
     },
     {
-      id: 3,
-      title: "Brooklyn Warehouse Performance",
-      category: "photos",
-      type: "image", 
-      resolution: "6000x4000",
-      format: "JPG",
-      size: "5.2 MB",
-      description: "Live performance shot from 4:45 Somewhere in Brooklyn warehouse set",
-      downloadUrl: "/media/press/brooklyn-warehouse-performance.jpg",
-      thumbnailUrl: "/media/thumbnails/brooklyn-performance-thumb.jpg", 
-      tags: ["performance", "live", "brooklyn"]
+      title: 'Brooklyn Resident',
+      description: 'Weekly events at Broken Land, Talon, and premium venues',
+      icon: Music2,
+      color: 'var(--brand-orange)'
     },
     {
-      id: 4,
-      title: "Disco Ascension Mix - Behind the Scenes",
-      category: "videos",
-      type: "video",
-      resolution: "1920x1080",
-      format: "MP4",
-      size: "45.7 MB",
-      description: "Behind-the-scenes footage of creating the Disco Ascension mix",
-      downloadUrl: "/media/videos/disco-ascension-bts.mp4",
-      thumbnailUrl: "/media/thumbnails/disco-bts-thumb.jpg",
-      tags: ["behind-the-scenes", "disco ascension", "studio"]
-    },
-    {
-      id: 5,
-      title: "Apple Store DJ Residency",
-      category: "photos",
-      type: "image",
-      resolution: "4000x3000", 
-      format: "JPG",
-      size: "3.1 MB",
-      description: "Performance at Apple Fifth Avenue DJ residency",
-      downloadUrl: "/media/press/apple-store-residency.jpg",
-      thumbnailUrl: "/media/thumbnails/apple-residency-thumb.jpg",
-      tags: ["apple", "residency", "performance"]
-    },
-    {
-      id: 6,
-      title: "Zack Bissell Logo - Monogram",
-      category: "logos",
-      type: "vector", 
-      resolution: "Vector",
-      format: "SVG",
-      size: "18 KB",
-      description: "Personal monogram logo for Zack Bissell",
-      downloadUrl: "/media/logos/zb-monogram.svg",
-      thumbnailUrl: "/media/thumbnails/zb-monogram-thumb.jpg",
-      tags: ["monogram", "personal", "logo"]
-    },
-    {
-      id: 7,
-      title: "Electronic Press Kit - Full Package",
-      category: "press",
-      type: "document",
-      resolution: "PDF",
-      format: "PDF", 
-      size: "8.9 MB",
-      description: "Complete electronic press kit with bio, photos, and achievements",
-      downloadUrl: "/media/press/zack-bissell-epk-full.pdf",
-      thumbnailUrl: "/media/thumbnails/epk-thumb.jpg",
-      tags: ["epk", "press kit", "comprehensive"]
-    },
-    {
-      id: 8,
-      title: "Nostalgia Trap Mix - Visual Story",
-      category: "videos",
-      type: "video",
-      resolution: "1920x1080",
-      format: "MP4",
-      size: "67.3 MB", 
-      description: "Visual narrative accompaniment to the chart-topping Nostalgia Trap mix",
-      downloadUrl: "/media/videos/nostalgia-trap-visual.mp4",
-      thumbnailUrl: "/media/thumbnails/nostalgia-visual-thumb.jpg",
-      tags: ["nostalgia trap", "visual", "narrative"]
+      title: 'Multi-Genre Innovation',
+      description: 'Pioneering immersive storytelling through DJ sets',
+      icon: Globe,
+      color: 'var(--brand-orange)'
     }
   ];
 
-  const filteredAssets = selectedCategory === 'all' 
-    ? mediaAssets 
-    : mediaAssets.filter(asset => asset.category === selectedCategory);
-
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'image': return <ImageIcon className="h-4 w-4" />;
-      case 'video': return <Video className="h-4 w-4" />;
-      case 'vector': return <Palette className="h-4 w-4" />;
-      case 'document': return <FileText className="h-4 w-4" />;
-      default: return <ImageIcon className="h-4 w-4" />;
+  const pressKit = [
+    {
+      title: 'High-Resolution Photos',
+      description: 'Professional performance and portrait photography',
+      icon: Camera,
+      downloadUrl: '#',
+      size: '25MB ZIP'
+    },
+    {
+      title: 'Artist Biography',
+      description: 'Complete bio, achievements, and technical information',
+      icon: FileText,
+      downloadUrl: '#',
+      size: '2MB PDF'
+    },
+    {
+      title: 'Technical Rider',
+      description: 'Complete technical requirements and stage plot',
+      icon: Music2,
+      downloadUrl: '#',
+      size: '1.5MB PDF'
+    },
+    {
+      title: 'Press Release',
+      description: 'Latest news, tour dates, and promotional materials',
+      icon: ExternalLink,
+      downloadUrl: '#',
+      size: '1MB PDF'
     }
-  };
+  ];
+
+  const streamingPlatforms = [
+    { name: 'Mixcloud', url: '#', plays: '500K+' },
+    { name: 'SoundCloud', url: '#', plays: '250K+' },
+    { name: 'Spotify', url: '#', plays: '100K+' },
+    { name: 'Apple Music', url: '#', plays: '75K+' }
+  ];
+
+  const socialLinks = [
+    { name: 'Instagram', icon: Instagram, url: '#', followers: '15K' },
+    { name: 'Twitter', icon: Twitter, url: '#', followers: '8K' },
+    { name: 'YouTube', icon: Youtube, url: '#', subscribers: '12K' }
+  ];
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-6 max-w-6xl">
-            <div className="text-center mb-12">
-              <Badge variant="outline" className="mb-6 text-sm font-medium">
-                Media Assets
-              </Badge>
-              <h1 className="text-large-title font-bold text-foreground mb-6">
-                Press Media & Assets
-              </h1>
-              <p className="text-title2 text-foreground-secondary mb-8 max-w-3xl mx-auto">
-                High-resolution photos, logos, videos, and press materials ready for 
-                download and use by media, promoters, and venues.
+    <ProfessionalLayout
+      title="Media & Press Kit"
+      description="Download high-resolution photos, bio, and press materials for Zack Bissell - Brooklyn-based DJ and sonic architect."
+      maxWidth="wide"
+    >
+      {/* Hero Section */}
+      <ProfessionalSection spacing="large">
+        <div className="text-center">
+          <h1
+            style={{
+              fontFamily: 'var(--font-family-base)',
+              fontSize: 'var(--font-size-large-title)',
+              fontWeight: 'var(--font-weight-black)',
+              lineHeight: 'var(--line-height-tight)',
+              letterSpacing: '-0.02em',
+              color: 'var(--color-text-primary)',
+              marginBottom: 'var(--space-6)',
+              textAlign: 'left'
+            }}
+          >
+            Media &{' '}
+            <span style={{ color: 'var(--brand-orange)' }}>Press Kit</span>
+          </h1>
+          
+          <p
+            style={{
+              fontFamily: 'var(--font-family-base)',
+              fontSize: 'var(--font-size-body-large)',
+              fontWeight: 'var(--font-weight-regular)',
+              lineHeight: 'var(--line-height-relaxed)',
+              color: 'var(--color-text-secondary)',
+              maxWidth: '800px',
+              margin: '0 auto var(--space-8) auto',
+              textAlign: 'left'
+            }}
+          >
+            Download high-resolution assets, press materials, and comprehensive information 
+            about Zack Bissell - the Brooklyn-based DJ revolutionizing electronic music through 
+            immersive storytelling experiences.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <ProfessionalButton
+              variant="primary"
+              size="large"
+              onClick={() => {
+                const element = document.getElementById('press-kit');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <Download className="w-5 h-5" />
+              Download Full EPK
+            </ProfessionalButton>
+            
+            <ProfessionalButton
+              variant="secondary"
+              size="large"
+              onClick={() => {
+                const element = document.getElementById('bio-section');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <FileText className="w-5 h-5" />
+              Read Bio
+            </ProfessionalButton>
+          </div>
+        </div>
+      </ProfessionalSection>
+
+      {/* Key Achievements */}
+      <ProfessionalSection 
+        title="Key Achievements"
+        subtitle="Chart-topping performances and industry recognition"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {achievements.map((achievement) => (
+            <ProfessionalCard key={achievement.title} className="text-center">
+              <achievement.icon 
+                className="w-12 h-12 mx-auto mb-4"
+                style={{ color: achievement.color }}
+              />
+              <h3
+                style={{
+                  fontFamily: 'var(--font-family-base)',
+                  fontSize: 'var(--font-size-headline)',
+                  fontWeight: 'var(--font-weight-semibold)',
+                  color: 'var(--color-text-primary)',
+                  marginBottom: 'var(--space-2)'
+                }}
+              >
+                {achievement.title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: 'var(--font-family-base)',
+                  fontSize: 'var(--font-size-body)',
+                  color: 'var(--color-text-secondary)',
+                  textAlign: 'left'
+                }}
+              >
+                {achievement.description}
+              </p>
+            </ProfessionalCard>
+          ))}
+        </div>
+      </ProfessionalSection>
+
+      {/* Artist Biography */}
+      <ProfessionalSection 
+        id="bio-section"
+        title="Artist Biography"
+        subtitle="The story behind the music"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <ProfessionalCard>
+              <div
+                style={{
+                  fontFamily: 'var(--font-family-base)',
+                  fontSize: 'var(--font-size-body)',
+                  lineHeight: 'var(--line-height-relaxed)',
+                  color: 'var(--color-text-primary)'
+                }}
+              >
+                <p style={{ marginBottom: 'var(--space-4)' }}>
+                  <strong>Zack Bissell</strong> is an innovative multi-genre DJ, producer, and singer based in Brooklyn, 
+                  holding residencies and weekly events at premier establishments including Broken Land and Talon. 
+                  Known for his dynamic storytelling through music, Zack crafts immersive sets that blend indie dance, 
+                  house, and other genres, taking listeners on thematic journeys that transcend traditional DJ performances.
+                </p>
+                
+                <p style={{ marginBottom: 'var(--space-4)' }}>
+                  His meticulous approach to recording and high-quality audio production has consistently earned recognition 
+                  on global charts. Notably, his mix <em>"nostalgia trap, reality slap"</em> reached <strong>#1 on the Global Dance Punk</strong> charts 
+                  and <strong>#43 on the Global Indie Dance/Alternative Dance</strong> charts on Mixcloud, establishing him as a 
+                  force in the electronic music landscape.
+                </p>
+                
+                <p style={{ marginBottom: 'var(--space-4)' }}>
+                  Whether commanding the main stage at packed festivals or creating intimate experiences for discerning 
+                  audiences, Zack Bissell's passion for music and revolutionary approach to storytelling makes him a 
+                  standout figure in the contemporary dance music community.
+                </p>
+              </div>
+            </ProfessionalCard>
+          </div>
+          
+          <div className="space-y-6">
+            {/* Quick Facts */}
+            <ProfessionalCard>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-family-base)',
+                  fontSize: 'var(--font-size-headline)',
+                  fontWeight: 'var(--font-weight-semibold)',
+                  color: 'var(--color-text-primary)',
+                  marginBottom: 'var(--space-4)'
+                }}
+              >
+                Quick Facts
+              </h3>
+              <div className="space-y-3">
+                <div>
+                  <span style={{ fontWeight: 'var(--font-weight-semibold)' }}>Based:</span>{' '}
+                  Brooklyn, New York
+                </div>
+                <div>
+                  <span style={{ fontWeight: 'var(--font-weight-semibold)' }}>Genres:</span>{' '}
+                  Indie Dance, House, Electronic
+                </div>
+                <div>
+                  <span style={{ fontWeight: 'var(--font-weight-semibold)' }}>Residencies:</span>{' '}
+                  Broken Land, Talon
+                </div>
+              </div>
+            </ProfessionalCard>
+
+            {/* Streaming Stats */}
+            <ProfessionalCard>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-family-base)',
+                  fontSize: 'var(--font-size-headline)',
+                  fontWeight: 'var(--font-weight-semibold)',
+                  color: 'var(--color-text-primary)',
+                  marginBottom: 'var(--space-4)'
+                }}
+              >
+                Streaming Platforms
+              </h3>
+              <div className="space-y-3">
+                {streamingPlatforms.map((platform) => (
+                  <div key={platform.name} className="flex justify-between items-center">
+                    <span style={{ fontWeight: 'var(--font-weight-medium)' }}>
+                      {platform.name}
+                    </span>
+                    <span style={{ color: 'var(--color-text-secondary)' }}>
+                      {platform.plays}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </ProfessionalCard>
+          </div>
+        </div>
+      </ProfessionalSection>
+
+      {/* Press Kit Downloads */}
+      <ProfessionalSection 
+        id="press-kit"
+        title="Press Kit Downloads"
+        subtitle="High-quality assets for media and promotional use"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {pressKit.map((item) => (
+            <ProfessionalCard key={item.title} interactive>
+              <div className="text-center">
+                <item.icon 
+                  className="w-12 h-12 mx-auto mb-4"
+                  style={{ color: 'var(--brand-orange)' }}
+                />
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-family-base)',
+                    fontSize: 'var(--font-size-headline)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--color-text-primary)',
+                    marginBottom: 'var(--space-2)'
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-family-base)',
+                    fontSize: 'var(--font-size-body)',
+                    color: 'var(--color-text-secondary)',
+                    marginBottom: 'var(--space-4)',
+                    textAlign: 'left'
+                  }}
+                >
+                  {item.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-family-base)',
+                      fontSize: 'var(--font-size-callout)',
+                      color: 'var(--color-text-tertiary)'
+                    }}
+                  >
+                    {item.size}
+                  </span>
+                  <ProfessionalButton variant="secondary" size="small">
+                    <Download className="w-4 h-4" />
+                  </ProfessionalButton>
+                </div>
+              </div>
+            </ProfessionalCard>
+          ))}
+        </div>
+        
+        <div className="text-center mt-8">
+          <ProfessionalButton variant="primary" size="large">
+            <Download className="w-5 h-5" />
+            Download Complete EPK Package
+          </ProfessionalButton>
+        </div>
+      </ProfessionalSection>
+
+      {/* Social Media & Links */}
+      <ProfessionalSection 
+        title="Connect & Follow"
+        subtitle="Stay updated with latest releases and performances"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Social Media */}
+          <ProfessionalCard>
+            <h3
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-headline)',
+                fontWeight: 'var(--font-weight-semibold)',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-4)'
+              }}
+            >
+              Social Media
+            </h3>
+            <div className="space-y-4">
+              {socialLinks.map((social) => (
+                <div key={social.name} className="flex items-center justify-between p-3 rounded-lg border" style={{ borderColor: 'var(--glass-border)' }}>
+                  <div className="flex items-center gap-3">
+                    <social.icon className="w-5 h-5" style={{ color: 'var(--brand-orange)' }} />
+                    <span style={{ fontWeight: 'var(--font-weight-medium)' }}>
+                      {social.name}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--font-size-callout)' }}>
+                      {social.followers}
+                    </span>
+                    <ExternalLink className="w-4 h-4" style={{ color: 'var(--color-text-tertiary)' }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ProfessionalCard>
+
+          {/* Featured Mix */}
+          <ProfessionalCard>
+            <h3
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-headline)',
+                fontWeight: 'var(--font-weight-semibold)',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-4)'
+              }}
+            >
+              Featured Mix
+            </h3>
+            <div className="aspect-video bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+              <Play className="w-16 h-16 text-white" />
+            </div>
+            <h4
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-body-large)',
+                fontWeight: 'var(--font-weight-semibold)',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-2)'
+              }}
+            >
+              Nostalgia Trap: Reality Slap
+            </h4>
+            <p
+              style={{
+                fontFamily: 'var(--font-family-base)',
+                fontSize: 'var(--font-size-body)',
+                color: 'var(--color-text-secondary)',
+                marginBottom: 'var(--space-4)'
+              }}
+            >
+              #1 Global Dance Punk | 250K+ plays
+            </p>
+            <ProfessionalButton variant="secondary">
+              <ExternalLink className="w-4 h-4" />
+              Listen on Mixcloud
+            </ProfessionalButton>
+          </ProfessionalCard>
+        </div>
+      </ProfessionalSection>
+
+      {/* Contact for Press */}
+      <ProfessionalSection 
+        title="Press Inquiries"
+        subtitle="For interviews, features, and media requests"
+      >
+        <div className="max-w-2xl mx-auto text-center">
+          <ProfessionalCard>
+            <div className="mb-6">
+              <h3
+                style={{
+                  fontFamily: 'var(--font-family-base)',
+                  fontSize: 'var(--font-size-headline)',
+                  fontWeight: 'var(--font-weight-semibold)',
+                  color: 'var(--color-text-primary)',
+                  marginBottom: 'var(--space-2)'
+                }}
+              >
+                Media Contact
+              </h3>
+              <p
+                style={{
+                  fontFamily: 'var(--font-family-base)',
+                  fontSize: 'var(--font-size-body)',
+                  color: 'var(--color-text-secondary)'
+                }}
+              >
+                For press inquiries, interview requests, and media collaborations
               </p>
             </div>
-          </div>
-        </section>
-
-        {/* Filter and View Controls */}
-        <section className="py-8 border-b border-border">
-          <div className="container mx-auto px-6 max-w-6xl">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-              {/* Category Filters */}
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <Button
-                    key={category.id}
-                    variant={selectedCategory === category.id ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedCategory(category.id)}
-                    className="flex items-center gap-2"
-                  >
-                    {category.label}
-                    <Badge variant="secondary" className="text-xs">
-                      {category.count}
-                    </Badge>
-                  </Button>
-                ))}
+            
+            <div className="space-y-3 mb-6">
+              <div>
+                <span style={{ fontWeight: 'var(--font-weight-semibold)' }}>Email:</span>{' '}
+                press@zackbissell.com
               </div>
-
-              {/* View Mode Toggle */}
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-foreground-secondary">View:</span>
-                <div className="flex border border-border rounded-lg p-1">
-                  <Button
-                    variant={viewMode === 'grid' ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode('grid')}
-                    className="h-8 px-3"
-                  >
-                    <Grid3X3 className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant={viewMode === 'list' ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode('list')}
-                    className="h-8 px-3"
-                  >
-                    <List className="h-4 w-4" />
-                  </Button>
-                </div>
+              <div>
+                <span style={{ fontWeight: 'var(--font-weight-semibold)' }}>Response Time:</span>{' '}
+                24-48 hours
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Media Grid/List */}
-        <section className="py-16">
-          <div className="container mx-auto px-6 max-w-6xl">
-            {viewMode === 'grid' ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredAssets.map((asset) => (
-                  <div key={asset.id} className="bg-card border border-border rounded-lg overflow-hidden">
-                    <div className="aspect-video bg-muted flex items-center justify-center">
-                      <div className="text-muted-foreground">
-                        {getTypeIcon(asset.type)}
-                      </div>
-                    </div>
-                    <div className="p-4">
-                      <div className="flex items-start justify-between mb-2">
-                        <h3 className="font-semibold text-foreground text-sm leading-tight">
-                          {asset.title}
-                        </h3>
-                        <Badge variant="outline" className="text-xs ml-2 flex-shrink-0">
-                          {asset.format}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-foreground-secondary mb-3 line-clamp-2">
-                        {asset.description}
-                      </p>
-                      <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
-                        <span>{asset.resolution}</span>
-                        <span>{asset.size}</span>
-                      </div>
-                      <Button size="sm" className="w-full flex items-center gap-2">
-                        <Download className="h-3 w-3" />
-                        Download
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {filteredAssets.map((asset) => (
-                  <div key={asset.id} className="bg-card border border-border rounded-lg p-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
-                        {getTypeIcon(asset.type)}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between mb-1">
-                          <h3 className="font-semibold text-foreground">
-                            {asset.title}
-                          </h3>
-                          <Badge variant="outline" className="text-xs ml-4">
-                            {asset.format}
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-foreground-secondary mb-2">
-                          {asset.description}
-                        </p>
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          <span>{asset.resolution}</span>
-                          <span>{asset.size}</span>
-                          <div className="flex gap-1">
-                            {asset.tags.map((tag, index) => (
-                              <Badge key={index} variant="secondary" className="text-xs">
-                                {tag}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <Button size="sm" className="flex items-center gap-2 flex-shrink-0">
-                        <Download className="h-3 w-3" />
-                        Download
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Usage Guidelines */}
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-6 max-w-4xl">
-            <div className="text-center mb-12">
-              <h2 className="text-title1 font-bold text-foreground mb-6">
-                Usage Guidelines
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-card border border-border rounded-lg p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Camera className="h-5 w-5 text-primary" />
-                  <h3 className="font-semibold text-foreground">Photo Usage</h3>
-                </div>
-                <ul className="text-sm text-foreground-secondary space-y-2">
-                  <li>• High-resolution images suitable for print and digital</li>
-                  <li>• Credit: "Photo courtesy of Zack Bissell"</li>
-                  <li>• No alterations without prior approval</li>
-                  <li>• Available in multiple formats and resolutions</li>
-                </ul>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Palette className="h-5 w-5 text-primary" />
-                  <h3 className="font-semibold text-foreground">Logo & Branding</h3>
-                </div>
-                <ul className="text-sm text-foreground-secondary space-y-2">
-                  <li>• Vector formats for scalable reproduction</li>
-                  <li>• Maintain clear space and proportions</li>
-                  <li>• Available in multiple colorways</li>
-                  <li>• Contact for custom brand applications</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact for Additional Media */}
-        <section className="py-16">
-          <div className="container mx-auto px-6 max-w-4xl text-center">
-            <h2 className="text-title1 font-bold text-foreground mb-6">
-              Need Additional Media?
-            </h2>
-            <p className="text-body-large text-foreground-secondary mb-8 max-w-2xl mx-auto">
-              Looking for custom assets, higher resolutions, or specific content? 
-              We're here to support your media needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="flex items-center gap-2">
-                <ExternalLink className="h-5 w-5" />
-                Contact for Media
-              </Button>
-              <Button variant="outline" size="lg" className="flex items-center gap-2">
-                <FileText className="h-5 w-5" />
-                View Full EPK
-              </Button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </Layout>
+            <ProfessionalButton variant="primary" size="large">
+              Send Press Inquiry
+            </ProfessionalButton>
+          </ProfessionalCard>
+        </div>
+      </ProfessionalSection>
+    </ProfessionalLayout>
   );
 };
 

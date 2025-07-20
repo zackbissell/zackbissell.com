@@ -1,0 +1,339 @@
+/**
+ * Apple HIG Design Tokens - Liquid Glass 2025
+ * Based on Apple's latest Human Interface Guidelines with Liquid Glass design language
+ * Preserves Zack Bissell brand identity while implementing Apple standards
+ */
+
+/* Import Inter font with dynamic scaling support */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&display=swap');
+
+:root {
+  /* ==========================================================================
+     APPLE HIG TYPOGRAPHY SYSTEM - 2025 LIQUID GLASS
+     Left-aligned, bolder typography for better readability
+     ========================================================================== */
+  
+  /* Primary Font Family - Inter optimized for Apple devices */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  --font-family-mono: 'SF Mono', Monaco, Menlo, Consolas, 'Courier Prime', monospace;
+  
+  /* Typography Scale - Dynamic scaling following Apple HIG */
+  --font-size-large-title: clamp(3rem, 8vw, 5rem); /* 48px-80px */
+  --font-size-title1: clamp(2.25rem, 6vw, 3.5rem); /* 36px-56px */
+  --font-size-title2: clamp(1.75rem, 4vw, 2.75rem); /* 28px-44px */
+  --font-size-title3: clamp(1.5rem, 3.5vw, 2.25rem); /* 24px-36px */
+  --font-size-headline: clamp(1.25rem, 3vw, 1.75rem); /* 20px-28px */
+  --font-size-body-large: clamp(1.125rem, 2.5vw, 1.375rem); /* 18px-22px */
+  --font-size-body: clamp(1rem, 2vw, 1.125rem); /* 16px-18px */
+  --font-size-callout: clamp(0.875rem, 1.5vw, 1rem); /* 14px-16px */
+  --font-size-subhead: clamp(0.8125rem, 1.25vw, 0.9375rem); /* 13px-15px */
+  --font-size-footnote: clamp(0.75rem, 1vw, 0.8125rem); /* 12px-13px */
+  
+  /* Font Weights - Bolder for Liquid Glass */
+  --font-weight-black: 900;
+  --font-weight-heavy: 800;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  
+  /* Line Heights - Optimized for readability */
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+  
+  /* ==========================================================================
+     APPLE HIG SPACING SYSTEM - 8PT GRID
+     Consistent spacing following Apple's precision standards
+     ========================================================================== */
+  
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 2.5rem;   /* 40px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 3.5rem;   /* 56px */
+  --space-8: 4rem;     /* 64px */
+  --space-10: 5rem;    /* 80px */
+  --space-12: 6rem;    /* 96px */
+  --space-16: 8rem;    /* 128px */
+  --space-20: 10rem;   /* 160px */
+  
+  /* Touch targets - 44px minimum for accessibility */
+  --touch-target-min: 2.75rem; /* 44px */
+  
+  /* ==========================================================================
+     COLOR SYSTEM - LIQUID GLASS WITH BRAND PRESERVATION
+     Apple's 2025 color system while preserving Zack's brand identity
+     ========================================================================== */
+  
+  /* Brand Colors - PRESERVED from current site */
+  --brand-orange: #CC6544;
+  --brand-orange-light: #E07A54;
+  --brand-orange-dark: #B85A3A;
+  
+  /* Apple HIG Color Foundations */
+  --color-background-primary: rgb(255, 255, 255);
+  --color-background-secondary: rgb(248, 248, 248);
+  --color-background-tertiary: rgb(242, 242, 242);
+  
+  --color-text-primary: rgb(28, 28, 30);
+  --color-text-secondary: rgb(99, 99, 102);
+  --color-text-tertiary: rgb(142, 142, 147);
+  
+  /* Semantic Colors */
+  --color-success: rgb(48, 176, 199);
+  --color-warning: rgb(255, 149, 0);
+  --color-error: rgb(255, 69, 58);
+  --color-info: rgb(90, 200, 245);
+  
+  /* ==========================================================================
+     LIQUID GLASS EFFECTS - 2025 GLASSMORPHISM
+     Apple's new transparent, depth-based interface materials
+     ========================================================================== */
+  
+  /* Glassmorphism foundations */
+  --glass-background: rgba(255, 255, 255, 0.8);
+  --glass-background-strong: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --glass-blur: 20px;
+  
+  /* Navigation specific glass */
+  --nav-glass-background: rgba(255, 255, 255, 0.85);
+  --nav-glass-border: rgba(0, 0, 0, 0.05);
+  
+  /* ==========================================================================
+     MOTION DESIGN TOKENS - APPLE HIG ANIMATIONS
+     Smooth, purposeful animations following Apple standards
+     ========================================================================== */
+  
+  /* Duration */
+  --motion-duration-instant: 0ms;
+  --motion-duration-immediate: 100ms;
+  --motion-duration-quick: 200ms;
+  --motion-duration-moderate: 300ms;
+  --motion-duration-deliberate: 500ms;
+  --motion-duration-slow: 700ms;
+  
+  /* Easing - Apple's signature animation curves */
+  --motion-ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --motion-ease-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --motion-ease-accelerate: cubic-bezier(0.4, 0.0, 1, 1);
+  --motion-ease-sharp: cubic-bezier(0.4, 0.0, 0.6, 1);
+  
+  /* ==========================================================================
+     BORDER RADIUS - APPLE'S CONCENTRIC DESIGN
+     Consistent curvature matching hardware precision
+     ========================================================================== */
+  
+  --border-radius-small: 6px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 16px;
+  --border-radius-xl: 20px;
+  --border-radius-full: 9999px;
+  
+  /* ==========================================================================
+     Z-INDEX SYSTEM - LIQUID GLASS LAYERING
+     Consistent depth hierarchy for floating elements
+     ========================================================================== */
+  
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* ==========================================================================
+   UTILITY CLASSES - APPLE HIG IMPLEMENTATION
+   Ready-to-use classes following Apple design principles
+   ========================================================================== */
+
+/* Typography Utilities */
+.text-large-title {
+  font-size: var(--font-size-large-title);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
+}
+
+.text-title1 {
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-heavy);
+  line-height: var(--line-height-snug);
+  letter-spacing: -0.015em;
+}
+
+.text-title2 {
+  font-size: var(--font-size-title2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  letter-spacing: -0.01em;
+}
+
+.text-title3 {
+  font-size: var(--font-size-title3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+.text-headline {
+  font-size: var(--font-size-headline);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+.text-body-large {
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-body {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Glassmorphism Effects */
+.glass-effect {
+  background: var(--glass-background);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-nav {
+  background: var(--nav-glass-background);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--nav-glass-border);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Apple HIG Button Styles */
+.btn-apple-primary {
+  background: var(--brand-orange);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-medium);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-body);
+  padding: var(--space-3) var(--space-4);
+  min-height: var(--touch-target-min);
+  transition: all var(--motion-duration-quick) var(--motion-ease-standard);
+  cursor: pointer;
+}
+
+.btn-apple-primary:hover {
+  background: var(--brand-orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(204, 101, 68, 0.25);
+}
+
+.btn-apple-secondary {
+  background: var(--glass-background);
+  color: var(--color-text-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-medium);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  padding: var(--space-3) var(--space-4);
+  min-height: var(--touch-target-min);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: all var(--motion-duration-quick) var(--motion-ease-standard);
+  cursor: pointer;
+}
+
+.btn-apple-secondary:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Spacing Utilities */
+.space-y-1 > * + * { margin-top: var(--space-1); }
+.space-y-2 > * + * { margin-top: var(--space-2); }
+.space-y-3 > * + * { margin-top: var(--space-3); }
+.space-y-4 > * + * { margin-top: var(--space-4); }
+.space-y-6 > * + * { margin-top: var(--space-6); }
+.space-y-8 > * + * { margin-top: var(--space-8); }
+
+/* Apple HIG Layout Utilities */
+.container-apple {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .container-apple {
+    padding: 0 var(--space-3);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE IMPROVEMENTS - MOBILE FIRST
+   Enhanced mobile experience following Apple standards
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    /* Adjust font sizes for mobile */
+    --font-size-large-title: clamp(2.5rem, 10vw, 4rem);
+    --font-size-title1: clamp(2rem, 8vw, 3rem);
+    --font-size-title2: clamp(1.5rem, 6vw, 2.25rem);
+    
+    /* Tighter spacing on mobile */
+    --space-6: 2rem;    /* 32px instead of 48px */
+    --space-8: 3rem;    /* 48px instead of 64px */
+    --space-10: 4rem;   /* 64px instead of 80px */
+  }
+  
+  /* Ensure touch targets are large enough */
+  .btn-apple-primary,
+  .btn-apple-secondary {
+    min-height: var(--touch-target-min);
+    font-size: var(--font-size-body);
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   Following Apple's accessibility standards
+   ========================================================================== */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-background: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(0, 0, 0, 0.3);
+    --color-text-secondary: rgb(60, 60, 67);
+  }
+}
+
+/* Focus styles following Apple HIG */
+*:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-small);
+}

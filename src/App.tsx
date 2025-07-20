@@ -8,7 +8,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ComingSoon from "./components/ui/ComingSoon";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import EPK from "./pages/EPK";
+import Media from "./pages/Media";
+import StagePlot from "./pages/StagePlot";
+import Booking from "./pages/Booking";
 import DiscoAscension from "./pages/DiscoAscension";
+import DiscoAscensionEnhanced from "./pages/DiscoAscensionEnhanced";
 import NostalgiaTrap from "./pages/NostalgiaTrap";
 import RoleModel from "./pages/RoleModel";
 import NotFound from "./pages/NotFound";
@@ -24,7 +29,12 @@ const App = () => (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/epk" element={<EPK />} />
+            <Route path="/media" element={<Media />} />
+            <Route path="/stage-plot" element={<StagePlot />} />
+            <Route path="/booking" element={<Booking />} />
             <Route path="/disco-ascension" element={<DiscoAscension />} />
+            <Route path="/disco-ascension-enhanced" element={<DiscoAscensionEnhanced />} />
             <Route path="/nostalgia-trap" element={<NostalgiaTrap />} />
             <Route path="/role-model" element={<RoleModel />} />
             {/* Placeholder routes for other pages */}
@@ -35,7 +45,6 @@ const App = () => (
             <Route path="/watch" element={<ComingSoon title="Watch" />} />
             <Route path="/press" element={<ComingSoon title="Press & Testimonials" />} />
             <Route path="/lab-obsidian" element={<ComingSoon title="Lab Obsidian" />} />
-            <Route path="/booking" element={<ComingSoon title="Booking" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
       </BrowserRouter>

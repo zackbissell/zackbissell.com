@@ -1,4 +1,5 @@
-/* Apple SF Pro Display Integration */
+/* Apple HIG Integration - 2025 Liquid Glass Design System */
+@import url('./apple-hig.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900;slnt,wght@-10..0,100..900&display=swap');
 
 @tailwind base;
@@ -94,8 +95,11 @@
     --spring-slow: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --spring-fast: cubic-bezier(0.18, 0.89, 0.32, 1.28);
 
-    /* Brand colors with P3 enhancement */
-    --brand-primary: color(display-p3 0.96 0.62 0.11); /* Enhanced amber */
+    /* Brand colors with P3 enhancement - PRESERVING ZACK'S BRAND IDENTITY */
+    --brand-primary: #CC6544; /* PRESERVED: Zack's signature orange */
+    --brand-orange: #CC6544; /* PRESERVED: Primary brand color */
+    --brand-orange-light: #E07A54; /* PRESERVED: Light variant */
+    --brand-orange-dark: #B85A3A; /* PRESERVED: Dark variant */
     --destructive: color(display-p3 0.94 0.27 0.27); /* Enhanced red */
     --success: color(display-p3 0.13 0.60 0.22); /* Enhanced green */
     
