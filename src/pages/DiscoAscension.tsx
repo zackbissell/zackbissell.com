@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../components/global/Layout';
 import WorldNavigation from '../components/global/WorldNavigation';
 import HeroDisco from '../components/worlds/disco-ascension/HeroDisco';
-import RevolutionaryAudioPlayer from '../components/audio/RevolutionaryAudioPlayer';
+import EnhancedAudioPlayer from '../components/audio/EnhancedAudioPlayer';
 import IncidentLog from '../components/worlds/disco-ascension/IncidentLog';
 import TracklistDisco from '../components/worlds/disco-ascension/TracklistDisco';
 import ShareCTA from '../components/worlds/disco-ascension/ShareCTA';
@@ -31,14 +31,13 @@ export default function DiscoAscension() {
       </div>
 
       <div className="container space-y-12 starfield-crt">
-        <RevolutionaryAudioPlayer
+        <EnhancedAudioPlayer
           embedUrl={audioConfig.embedUrl}
           title={audioConfig.title}
           artist={audioConfig.artist}
           worldTheme="disco"
           classificationLevel={audioConfig.classification}
           warningMessage={audioConfig.warningMessage}
-          showParticles={true}
           showAdvancedVisualizer={true}
           autoEnhance={true}
         />

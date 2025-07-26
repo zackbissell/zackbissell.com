@@ -340,6 +340,7 @@ class SpatialAudioEngine {
     modalClose: (position?: AudioPosition) => this.play('modalClose', position),
     success: (position?: AudioPosition) => this.play('success', position),
     error: (position?: AudioPosition) => this.play('error', position),
+    warningAlert: (position?: AudioPosition) => this.play('error', position),
   };
 
   setVolume(volume: number): void {
