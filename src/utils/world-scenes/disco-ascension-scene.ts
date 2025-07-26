@@ -495,11 +495,7 @@ export class DiscoAscensionScene extends WorldScene {
     });
     
     // Spatial audio feedback
-    spatialAudio.trigger({
-      type: 'glitch',
-      position: { x: 0, y: 0, z: 0 },
-      intensity: intensity
-    });
+    spatialAudio.disco.glitch();
     
     // Haptic feedback
     haptics.trigger({ intensity: 'medium' });
@@ -518,7 +514,7 @@ export class DiscoAscensionScene extends WorldScene {
           this.triggerGlitch(0.8);
           
           spatialAudio.ui.warningAlert();
-          haptics.trigger({ intensity: 'strong' });
+          haptics.trigger({ intensity: 'heavy' });
         }
       });
     }
